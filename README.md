@@ -21,7 +21,7 @@
 4) выгрузить время начала и конца, а также продолжительность теста    
 
 ________________________________
-_____________English____________
+__English
 
 This program allows you to connect to .lra files and download the data for the tests in csv, png, implementing methods from HP Analysys API C#. The sample program "AnalysisApiSample2005" that comes with HP Loadrunner was used to write LraDataExporter.    
 
