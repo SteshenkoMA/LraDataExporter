@@ -1,0 +1,2599 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Analysis.ApiLib</name>
+    </assembly>
+    <members>
+        <member name="T:Analysis.ApiLib.ApiExportException">
+            <summary>
+            Exception on problem during data export.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.ApiException">
+            <summary>
+            The base Exception for all Analysis.Api custom exceptions
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of ApiException
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of ApiException
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception</param>
+        </member>
+        <member name="P:Analysis.ApiLib.ApiException.IsAlreadyLogged">
+            <summary>
+            Indicates wheter this ApiException has been already logged.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiExportException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of ApiExportException
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiExportException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of ApiExportException
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception</param>
+        </member>
+        <member name="T:Analysis.ApiLib.ApiIndexedDictionary`2">
+            <summary>
+            Specific collection of TValue objects,
+            that can be accessed either by TKey or by index.
+            Insertion order of TValue objects is preserved.
+            </summary>
+            <typeparam name="TKey">key</typeparam>
+            <typeparam name="TValue">value</typeparam>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiIndexedDictionary`2.#ctor">
+            <summary>
+            Initializes a new instance of ApiIndexedDictionary
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiIndexedDictionary`2.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of ApiIndexedDictionary
+            </summary>
+            <param name="capacity">Initial capacity</param>
+        </member>
+        <member name="F:Analysis.ApiLib.ApiIndexedDictionary`2._valuesList">
+            <summary>
+            Internal TValue items list
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ApiIndexedDictionary`2._indexDictionary">
+            <summary>
+            Internal dictionary of indexes
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiIndexedDictionary`2.Add(`0,`1)">
+            <summary>
+            Adds a new item into this Dictionary
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiIndexedDictionary`2.ContainsKey(`0)">
+            <summary>
+            Determines wheater this dictionary contains specific key
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiIndexedDictionary`2.GetIndex(`0)">
+            <summary>
+            Gets item index by its key
+            </summary>
+            <param name="key"></param>
+            <returns>true if succeded</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiIndexedDictionary`2.TryGetIndex(`0,System.Int32@)">
+            <summary>
+            Safely gets item index by its key
+            </summary>
+            <param name="key"></param>
+            <param name="index"></param>
+            <returns>true if succeded</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiIndexedDictionary`2.Remove(`0)">
+            <summary>
+            Deletes item by its key
+            </summary>
+            <param name="key"></param>
+            <returns>true if succeded</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiIndexedDictionary`2.TryGetValue(`0,`1@)">
+            <summary>
+            Safely gets item by its key
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns>true if succeded</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiIndexedDictionary`2.TryGetIndexAndValue(`0,System.Int32@,`1@)">
+            <summary>
+            Safely gets item and its index by key
+            </summary>
+            <param name="key"></param>
+            <param name="index"></param>
+            <param name="value"></param>
+            <returns>true if succeded</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiIndexedDictionary`2.Clear">
+            <summary>
+            Clears all items in this dictionary
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiIndexedDictionary`2.GetEnumerator">
+            <summary>
+            Returns Enumerator for Values collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Analysis.ApiLib.ApiIndexedDictionary`2.Keys">
+            <summary>
+            Keys collection of this dictionary
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ApiIndexedDictionary`2.Values">
+            <summary>
+            Values collection of this dictionary
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ApiIndexedDictionary`2.Item(`0)">
+            <summary>
+            Value indexer by key
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Analysis.ApiLib.ApiIndexedDictionary`2.Item(System.Int32)">
+            <summary>
+            Value indexer by index
+            </summary>
+            <param name="index">index of value</param>
+            <returns></returns>
+        </member>
+        <member name="P:Analysis.ApiLib.ApiIndexedDictionary`2.Count">
+            <summary>
+            Count of values that are currently in this dictionary
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.ApiInvalidMetadataFormatException">
+            <summary>
+            Exception for MTD file parsing errors
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiInvalidMetadataFormatException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of ApiInvalidMetadataFormatException
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiInvalidMetadataFormatException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of ApiInvalidMetadataFormatException
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception</param>
+        </member>
+        <member name="T:Analysis.ApiLib.CsvExportSettings">
+            <summary>
+            Settings for CSV export
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.CsvExportSettings.CSV_SCHEMA_FILE">
+            <summary>
+            The name of the Microsoft Text Driver Schema file - Schema.ini.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.CsvExportSettings.#ctor">
+            <summary>
+            Initializes a new instance of CsvExportSettings
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.CsvExportSettings.BuildFloatFormat">
+            <summary>
+            Builds float format based on IntegralLength and FractionalLength
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.CsvExportSettings.CheckForPositiveValue(System.Int32)">
+            <summary>
+            Throws ArgumentOutOfRangeException if value is less than 0.
+            </summary>
+            <param name="value">value to check</param>
+        </member>
+        <member name="P:Analysis.ApiLib.CsvExportSettings.IsHeaderEnabled">
+            <summary>
+            Enables header string generating in exported CSV file.
+            Default is true
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.CsvExportSettings.IsSchemaEnabled">
+            <summary>
+            Enables Schema.ini file generation during export.
+            Default is true
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.CsvExportSettings.Separator">
+            <summary>
+            The separator for the CSV file.
+            Default is a comma
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.CsvExportSettings.DecimalSeparator">
+            <summary>
+            Decimal separator
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.CsvExportSettings.FractionalLength">
+            <summary>
+            Length of fractional part
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.CsvExportSettings.IntegralLength">
+            <summary>
+            Length of integral part
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.CsvExportSettings.FloatFormat">
+            <summary>
+            Floating point value format
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.CsvExportSettings.DateFormat">
+            <summary>
+            Date only format
+            http://www.csharp-examples.net/string-format-datetime/
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.CsvExportSettings.TimeFormat">
+            <summary>
+            Time only format
+            http://www.csharp-examples.net/string-format-datetime/
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.CsvExportSettings.DateTimeFormat">
+            <summary>
+            Date and Time format
+            http://www.csharp-examples.net/string-format-datetime/
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.DatabaseSettings">
+            <summary>
+            The options available on the database tab in the options dialog.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.DatabaseSettings.#ctor">
+            <summary>
+            Initializes a new instance of DatabaseSettings
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.DatabaseEngine">
+            <summary>Indicates which data base engine to use.</summary>
+            <value>
+                A value of the <see cref="T:Analysis.ApiLib.DatabaseSettings.DatabaseEngines">DatabaseEngines
+                Enumeration</see>.
+            </value>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.ServerName">
+            <summary>The name of the server that hosts the database manager.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.IsWindowsIntegratedSecurityUsed">
+            <summary>Indicates whether to use Integrated Windows Security (SSPI).</summary>
+            <value>If false, use database management system authentication.</value>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.UserName">
+            <summary>The database user name.</summary>
+            <requirements>
+            	<para>
+                    If <see cref="P:Analysis.ApiLib.DatabaseSettings.IsWindowsIntegratedSecurityUsed">IsWindowsIntegratedSecurityUsed</see> is
+                    true, the network user name.
+                </para>
+            	<para>Otherwise, the DBMS user name.</para>
+            </requirements>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.Password">
+            <summary>The database password.</summary>
+            <remarks>
+            	<para>
+                    If <see cref="P:Analysis.ApiLib.DatabaseSettings.IsWindowsIntegratedSecurityUsed">IsWindowsIntegratedSecurityUsed</see> is
+                    true, the network user name.
+                </para>
+            	<para>Otherwise, the DBMS user name.</para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.LogicalStorageLocation">
+            <summary>
+            Logical Storage Location
+            </summary>
+            <remarks>
+            	<para>The shared directory on the SQL server or MSDE machine in which you want
+                permanent and temporary database files to be stored.</para>
+            	<para>For example, <tt>\\myDBserver\myAnalysisDBFolder</tt></para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.LocalStorageLocation">
+            <summary>
+            The share name of the local folder. 
+            </summary>
+            <remarks>The local name of the folder is 
+            specified by <tt>LocalPhysicalStorageLocation</tt>.
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.LocalPhysicalStorageLocation">
+            <summary>
+            The local name of the folder used in "Remote Mode". 
+            </summary>
+            <remarks>	
+            This folder must be shared. The shared name of this folder is 
+            specified by <tt>LocalStorageLocation</tt>.
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.PhysicalStorageLocation">
+            <summary>The drive and path that correspond to the LogicalStorageLocation.</summary>
+            <remarks>
+            	<para>For example, if the Analysis database is mapped to an SQL server named fly,
+                and fly is mapped to drive D, enter <tt>D:\&lt;Analysis Database&gt;</tt>.</para>
+            	<para>If the SQL server or MSDE and Analysis are on the same machine, the logical
+                storage location and physical storage location are identical.</para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.IsParallelImportUsed">
+            <summary>Indicates whether to use parallel import into the database.</summary>
+            <remarks>
+            	<para>If true, CSV files are imported in parallel into the database when analysing
+                raw results. This option applies to Access and SQL Server.</para>
+            	<para>The default is true.</para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.UseManagedIndexes">
+            <summary>
+            Indicates whether to drop all indexes before inserting data and recover the
+            indexes afterwards.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.UseMsSqlSpecialOptions">
+            <summary>
+            Indicates whether to use BATCHSIZE and TABLOCK in bulk insert operations on a SQL
+            Server.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.DatabaseSettings.IsRemoteBulkInsertEnabled">
+            <summary>Indicates whether remote import of CSV files is enabled.</summary>
+        </member>
+        <member name="T:Analysis.ApiLib.DatabaseSettings.DatabaseEngines">
+            <summary>
+            Supported Database Engines
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.DatabaseSettings.DatabaseEngines.Access2000">
+            <summary>
+            Microsoft Access 2000/XP/2003
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.DatabaseSettings.DatabaseEngines.SqlServer2000">
+            <summary>
+            Microsoft SQL Server 2000/2005
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.DataOptimization">
+            <summary>
+            The optimization modes for getting data from the database.
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.DataOptimization.Auto">
+            <summary>
+            Select the optimization mode automatically
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.DataOptimization.Memory">
+            <summary>
+            Use memory optimization. Uses as little memory as possible at expense of speed.
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.DataOptimization.Performance">
+            <summary>
+            Use performance optimization. Get data quickly at expense of memory usage.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.DateUtils.ConvertFromUnixDateTime(System.Int32)">
+            <summary>
+            Converts an input int Unix format DateTime value to real DateTime.
+            Unix DateTime value keeps the number of seconds since 01.01.1970 00:00:00.
+            </summary>
+            <param name="aInput"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.ApiLib.DateUtils.ConvertGMTDateTimeToLrLocal(System.DateTime)">
+            <summary>
+            Converts an input time value to Analysis local format adding a GMT bias to it.
+            Daylight delta is not considered.
+            </summary>
+            <param name="aInput"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Analysis.ApiLib.Dimensions.ContinuousValue">
+            <summary>A range of a given dimension.</summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.ContinuousValue.Assign(Analysis.ApiLib.Dimensions.ContinuousValue)">
+            <summary>
+            Copy the dimension name and values of another ContinuousValue object to
+            this.
+            </summary>
+            <param name="aSource">The source of the values</param>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.ContinuousValue.ToString">
+            <summary>
+            Returns the string representation of this ContinuousValue object.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Dimensions.ContinuousValue.BaseDimensionName">
+            <summary>The dimension name.</summary>
+            <remarks>This is the name of a measurement, like 
+            <tt>Transaction Response Time</tt>.</remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.Dimensions.ContinuousValue.Value">
+            <summary>The minimum and maximum values of the range.</summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Dimensions.ContinuousValueList">
+            <summary>
+            Collection of ContinuousValue Items.
+            Read only.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.ApiCustomReadOnlyCollection`1">
+            <summary>
+            Abstract class - implements parameterized collection of items.
+            Provides a Count and an indexer by index properties and an IEnumerable interface for a foreach block.
+            </summary>
+            <typeparam name="T">Any object type to store in the collection</typeparam>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomReadOnlyCollection`1.#ctor">
+            <summary>
+            Initializes a new instance of ApiCustomReadOnlyCollection
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ApiCustomReadOnlyCollection`1._list">
+            <summary>
+            Internal parameterized list to store objects of specified type
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomReadOnlyCollection`1.ToArray">
+            <summary>
+            Returns an array of the items in this collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomReadOnlyCollection`1.Add(`0)">
+            <summary>
+            Adds a new item to this collection.
+            </summary>
+            <param name="item">Item to add</param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomReadOnlyCollection`1.Remove(`0)">
+            <summary>
+            Removes an item from this collection.
+            </summary>
+            <param name="item">Item to remove</param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomReadOnlyCollection`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes the item at the specified index from the collection.
+            </summary>
+            <param name="aIndex">Index of item to remove</param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomReadOnlyCollection`1.Clear">
+            <summary>
+            Clears the collection.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomReadOnlyCollection`1.Contains(`0)">
+            <summary>
+            Checks whether this collection contains the specified item.
+            </summary>
+            <param name="item">Item to check</param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomReadOnlyCollection`1.GetEnumerator">
+            <summary>
+            Returns an iterator for the list of stored items.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomReadOnlyCollection`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an iterator for this collection.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ApiCustomReadOnlyCollection`1.Count">
+            <summary>
+            Returns the number of items stored in the collection.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ApiCustomReadOnlyCollection`1.Item(System.Int32)">
+            <summary>
+            Returns an item from the collection by its index.
+            </summary>
+            <param name="index">Index of item to get</param>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.ContinuousValueList.#ctor">
+            <summary>
+            Initializes a new instance of ContinuousValueList
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.ContinuousValueList.AddContinuousValues(System.Collections.Generic.List{System.String})">
+            <summary>
+            Parses a string list and adds new ContinuousValue Items to this Collection.
+            </summary>
+            <remarks>
+            The input list has an even number of string elements. Each pair defines
+            the range of some dimension. Each even-numbered element,
+            (0, 2, 4, ...) is the minimum value and the following odd-numbered element
+            (1, 3, 5, ...) is the maximum value. 
+            This list is read from the graph definition file or session file 
+            as a delimited string and converted to the list of strings.
+            </remarks>
+            <param name="aList">Specially formatted string list of Min and Max values</param>
+            <exception cref="T:Analysis.ApiLib.ApiInvalidMetadataFormatException">The number of continuous values is not an even number</exception>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.ContinuousValueList.AddRelatedContinuousValues(System.Collections.Generic.List{System.String})">
+            <summary>
+            Parses the given string list and adds new Related ContinuousValue Items to this Collection.
+            </summary>
+            <remarks>
+            The number of string elements in the list is a multiple of three. Each group of three defines a base dimension. 
+            The first number in a triplet(0, 3, 6, ...)is the range minimum. The second element(1, 4, 7, ...) 
+            is the range maximum. The third(2, 5, 8, ...) is the Base Dimension Name. 
+            This list is read from the graph definition file or session file as a 
+            delimited string and converted to the list of strings.
+            </remarks>
+            <param name="aList">Specially formatted string list of Min, Max and BaseDimensionName values</param>
+            <exception cref="T:Analysis.ApiLib.ApiInvalidMetadataFormatException">The number of values in related continuous dimension cannot be divided by 3 without a remainder</exception>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.ContinuousValueList.AddValuesFrom(Analysis.ApiLib.Dimensions.ContinuousValueList)">
+            <summary>
+            Adds the ContinuousValue Items from another ContinuousValueList to this Collection.
+            </summary>
+            <param name="aList">The collection of ContinuousValue Items to add</param>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.ContinuousValueList.ToString">
+            <summary>
+            Returns the string representation of this ContinuousValueList object.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Dimensions.FilterValuesKind">
+            <summary>
+            DimensionValues object characteristics.
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Dimensions.FilterValuesKind.Discrete">
+            <summary>
+            Discrete
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Dimensions.FilterValuesKind.Continuous">
+            <summary>
+            Range
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Dimensions.DimensionValues">
+            <summary>
+            The lists of Continuous and Discrete Values
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DimensionValues.#ctor(Analysis.ApiLib.Dimensions.FilterValuesKind,Analysis.ApiLib.Dimensions.ContinuousValueList,Analysis.ApiLib.Dimensions.DiscreteValueList)">
+            <summary>
+            Initializes a new instance of DimensionValues.
+            </summary>
+            <param name="aValuesKind">FilterValuesKind</param>
+            <param name="aContinuousValues">List of Continuous values</param>
+            <param name="aDiscreteValues">List of Discrete values</param>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DimensionValues.#ctor(Analysis.ApiLib.Dimensions.DiscreteValueList)">
+            <summary>
+            Initializes a new instance of DimensionValues of type FilterValuesKind.Discrete.
+            </summary>
+            <param name="aDiscreteValues">List of Discrete values</param>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DimensionValues.IsDiscreteValues">
+            <summary>Checks whether the FilterItem contains discrete values.</summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DimensionValues.IsContinuousValues">
+            <summary>Checks whether the FilterItem contains continuous values.</summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DimensionValues.Assign(Analysis.ApiLib.Dimensions.DimensionValues)">
+            <summary>
+            Populates this DimensionValues lists from another DimensionValues object.
+            </summary>
+            <param name="aSource">The object from which to copy the values</param>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DimensionValues.CheckDiscreteValue(System.String)">
+            <summary>
+            Checks whether the DiscreteValueList contains the specified value.
+            </summary>
+            <param name="aValue">the value to search for</param>
+            <returns>true if value found in DiscreteValueList</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DimensionValues.CheckContinuousValue(System.String,System.Double,System.Double)">
+            <summary>
+            Checks whether the ContinuousValueList contains a ContinuousValue with
+            the specified BaseDimensionName, and Min and Max values
+            within the specified range.
+            </summary>
+            <remarks>
+            The end points of a continuous value are in the specified range if
+            the Min property of the value is greater than or equal to the aMin argument
+            and the Max property is less than or equal to the aMax argument.
+            </remarks>
+            <param name="aBaseDimensionName">BaseDimensionName of ContinuousValue</param>
+            <param name="aMin">Min value of ContinuousValue</param>
+            <param name="aMax">Max value of ContinuousValue</param>
+            <returns>true if the ContinuousValueList contains a ContinuousValue that fits the criteria
+            </returns>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DimensionValues.NoValues">
+            <summary>
+            Checks whether the values list is empty.
+            </summary>
+            <remarks>
+            The function checks the ContinuousValueList or the DiscretValueList as appropriate.
+            </remarks>
+            <returns>true if ContinuousValueList or DiscreteValueList are empty,
+            otherwise false</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DimensionValues.ToString">
+            <summary>
+            Returns the string representation of this DimensionValues object.
+            </summary>
+            <returns>String representation of the current object</returns>
+        </member>
+        <member name="P:Analysis.ApiLib.Dimensions.DimensionValues.ValuesKind">
+            <summary>
+            DimensionValues object characteristics.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Dimensions.DimensionValues.ContinuousValues">
+            <summary>
+            The list of values that are a range.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Dimensions.DimensionValues.DiscreteValues">
+            <summary>
+            The list of discrete values, represented as strings.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Dimensions.FilterValuesSubType">
+            <summary>
+            Subtypes for filter values.
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Dimensions.FilterValuesSubType.DiscreteString">
+            <summary>
+            For string values
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Dimensions.FilterValuesSubType.DiscreteNumber">
+            <summary>
+            Number values represented as string
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Dimensions.FilterValuesSubType.DiscreteId">
+            <summary>
+            Integer number values which actually are identifiers, used only for "Tree path ID" dimensions
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Dimensions.FilterValuesSubType.DiscreteSequential">
+            <summary>
+            The dimension values describes the Vusers
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Dimensions.FilterValuesSubType.Continuous">
+            <summary>
+            Continuous time based value, the range contains the time values in seconds from the begining of the run.
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Dimensions.FilterValuesSubType.ContinuousNumber">
+            <summary>
+            Regular continuous value. The range can be of any continuous type not only time (size in bytes for example)
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Dimensions.FilterValuesSubType.RelatedContinuous">
+            <summary>
+            Continuous time based value, the range contains the time values in seconds from the begining of the run. Also the name is filled.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Dimensions.FilterValuesSubTypeHelper">
+            <summary>
+            Class with some usefull methods for FilterValuesSubType enumeration
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.FilterValuesSubTypeHelper.IsDiscrete(Analysis.ApiLib.Dimensions.FilterValuesSubType)">
+            <summary>
+            Determines the kind by type
+            </summary>
+            <param name="aType">The filter item type</param>
+            <returns>true - if type relates to discrete values</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.FilterValuesSubTypeHelper.IsContinuous(Analysis.ApiLib.Dimensions.FilterValuesSubType)">
+            <summary>
+            Determines the kind by type
+            </summary>
+            <param name="aType">The filter item type</param>
+            <returns>true - if type relates to continuous values</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.FilterValuesSubTypeHelper.GetKind(Analysis.ApiLib.Dimensions.FilterValuesSubType)">
+            <summary>
+            Calculates the <see cref="T:Analysis.ApiLib.Dimensions.FilterValuesSubType"> FilterValuesSubType </see> value by provided FilterValuesSubType
+            </summary>
+            <param name="aType">A type to convert from</param>
+            <returns>The filter values kind</returns>
+        </member>
+        <member name="T:Analysis.ApiLib.Dimensions.DiscreteValueList">
+            <summary>
+            A collection of string representations of discrete values.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DiscreteValueList.#ctor">
+            <summary>
+            Initializes a new instance of DiscreteValueList.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DiscreteValueList.AddValuesFrom(System.Collections.Generic.List{System.String})">
+            <summary>
+            Converts the strings in the list to discrete values and adds them to this DiscreteValueList.
+            </summary>
+            <param name="aList">List of strings representing the Discrete values to add</param>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DiscreteValueList.AddValuesFrom(Analysis.ApiLib.Dimensions.DiscreteValueList)">
+            <summary>
+            Adds the discrete values from the list to this DiscreteValueList.
+            </summary>
+            <param name="aList">DiscreteValueList to add Discrete values from</param>
+        </member>
+        <member name="M:Analysis.ApiLib.Dimensions.DiscreteValueList.ToString">
+            <summary>
+            Returns the string representation of this DiscreteValueList object.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Dimensions.RangePairValue">
+            <summary>
+            The minimum and maximum values of the Range.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Dimensions.RangePairValue.Min">
+            <summary>
+            Minimum value
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Dimensions.RangePairValue.Max">
+            <summary>
+            Maximum value
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.ErrorCodes">
+            <summary>
+            Error code constants
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_OK">
+            <summary>
+            No error
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_DB_CONNECTION_FAILED">
+            <summary>
+            Database connection failed
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_INI_FILE_READ_FAILED">
+            <summary>
+            INI files reading failed
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_INI_FILE_WRITE_FAILED">
+            <summary>
+            INI file writing failed
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_EXTERNAL_ERROR">
+            <summary>
+            External error
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_CREATING_RUN_INFO_LIST_FAILED">
+            <summary>
+            Failed creating RunInfoList
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_LOADER_FAILED">
+            <summary>
+            Result loading process failed
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_LOADER_INIT_FAILED">
+            <summary>
+            Loader initialization procedure failed
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_LOADER_DB_PREPARE_FAILED">
+            <summary>
+            Failed to prepare Database for Loader
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_READING_CHART_GROUPS_INI">
+            <summary>
+            Failed to read ChartGroups.ini file
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_GETTING_OPTIONS_FILE_NAME">
+            <summary>
+            Could not get Options file name
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_SUMMARY_CREATING_FAILED">
+            <summary>
+            Failed to create Summary Page
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_TEMPLATE_APPLICATION_FAILED">
+            <summary>
+            Failed to apply a Template
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_METADATA_FILE_READ_ERROR">
+            <summary>
+            Error while reading Metadata file
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_INVALID_GRANULARITY_VALUE">
+            <summary>
+            Invalid Granularity value
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_READING_REAL_STAT_DATA_INI">
+            <summary>
+            Error while reading RealStatData.ini file
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_ITERATOR_UNAVAILABLE_FOR_PERCENTILE_GRAPH">
+            <summary>
+            Series Point Iterator is unavailable for Percentile Graph
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_SESSION_IS_NOT_OPENED">
+            <summary>
+            Session not opened
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_INVALID_FILTER_VALUE">
+            <summary>
+            Invalid Filter value
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_EXPORT_EDITABLE_STATE_REQUIRED">
+            <summary>
+            Editable state required to write new values to the exported record
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_EXPORT_NON_EDITABLE_STATE_REQUIRED">
+            <summary>
+            Non-editable state required to append a new record to exporting
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ErrorCodes.ERR_EXPORT_METADATA_COLUMN_NOT_FOUND">
+            <summary>
+            Desired MetadataColumn was not found in target Exporter`s Metadata
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Filter">
+            <summary>The filter of the containing object.</summary>
+            <remarks>
+            	<para>
+            		<tt>Filter</tt> is a collection of <see cref="T:Analysis.ApiLib.FilterItem">FilterItem</see>
+                    objects. This list is filled by the object that contains the <tt>Filter</tt>.
+                </para>
+            	<para>The values of the filter items can be changed.</para>
+            	<para>It is not possible to add new filter items.</para>
+            </remarks>
+        </member>
+        <member name="T:Analysis.ApiLib.ApiNamedItemsCollection`1">
+            <summary>Services for handling a collection of items that have a Name property.</summary>
+            <remarks>
+            Items in an instance of this collection implement the INamedItem
+            interface.
+            </remarks>
+            <keywords>ApiNamedItemsCollection</keywords>
+            <typeparam name="T">The name of type that implements the INamedItem interface.</typeparam>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiNamedItemsCollection`1.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of ApiNamedItemsCollection.
+            </summary>
+            <param name="aCaseSensitiveNames">Sets whether searching for an Item by Name is case-sensitive </param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiNamedItemsCollection`1.#ctor">
+            <summary>
+            Initializes a new instance of ApiNamedItemsCollection.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiNamedItemsCollection`1.TryGetValue(System.String,`0@)">
+            <summary>
+            Gets the item of the specified name from the collection.
+            </summary>
+            <param name="aName">The name of the item to retrieve.</param>
+            <param name="aItem">The reference to the item.</param>
+            <returns>true on success. 
+            false if no item of the specified name exists in the collection
+            </returns>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiNamedItemsCollection`1.ContainsName(System.String)">
+            <summary>
+            Checks whether the collection contains an item of the specified name.
+            </summary>
+            <param name="aName">The name to check.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiNamedItemsCollection`1.RemoveName(System.String)">
+            <summary>
+            Removes the specified Item from this Collection
+            </summary>
+            <param name="aName">The name of the item to remove</param>
+        </member>
+        <member name="P:Analysis.ApiLib.ApiNamedItemsCollection`1.CaseSensitiveNames">
+            <summary>
+            Indicates whether a search for an item by name is case-sensitive.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ApiNamedItemsCollection`1.Item(System.String)">
+            <summary>
+            Returns the specified item.
+            </summary>
+            <returns>A reference to the item</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.Filter.#ctor">
+            <summary>
+            Initializes a new instance of Filter
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Filter.Reset">
+            <summary>Clears the values in all filter items.</summary>
+            <remarks>
+            	<para>The items are not deleted. Only the values are cleared.</para>
+            	<para>After this method is called, there is no filtering.</para>
+            </remarks>
+        </member>
+        <member name="M:Analysis.ApiLib.Filter.ToString">
+            <summary>
+            Returns the string representation of the current object.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Filter.IsActive">
+            <summary>Indicates if the filter is applied to all values.</summary>
+            <remarks>
+            This property can be set to false to disable a filter temporarily without
+            clearing the filter's values.
+            </remarks>
+        </member>
+        <member name="T:Analysis.ApiLib.FilterItem">
+            <summary>A single item of a filter.</summary>
+            <remarks>
+            	<para>A filter item contains a list of values , all of the same type.</para>
+            	<para>All values in the same FilterItem are related by a logical OR.</para>
+            	<para>Values in a Filter used in separate FilterItems are related by a logical
+                AND.</para>
+            </remarks>
+        </member>
+        <member name="T:Analysis.ApiLib.INamedItem">
+            <summary>
+            This interface provides a string Name property.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.INamedItem.Name">
+            <summary>
+            The Name of the named item object.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.#ctor">
+            <summary>
+            Initializes a new instance of FilterItem.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.ClearValues">
+            <summary>Clears the FilterValues collection.</summary>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.CheckDiscreteValue(System.String)">
+            <summary>
+            Checks whether the discrete value is in <see cref="!:AvailableDiscreteValues"/>.
+            </summary>
+            <remarks>
+            If the  ConditionalOperator property is FilterItemConditionalOperator.Like or FilterItemConditionalOperator.NotLike
+            then this function always returns true.
+            </remarks>
+            <param name="aValue">The value to find.</param>
+            <returns>true if value found.</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.CheckContinuousValues(System.String,System.Double,System.Double)">
+            <summary>
+            ***
+            This function do the same work as AvailableValues.CheckContinuousValue(). 
+            It added here for symmetry with this.CheckDiscreteValue().
+            In future the behaviour of this function may change (like this.CheckDiscreteValue()), so it is recomended
+            to use this.CheckDiscreteValue() and this.CheckContinuousValues() in future
+            </summary>
+            <param name="aBaseDimensionName"></param>
+            <param name="aMin"></param>
+            <param name="aMax"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.AddDiscreteValue(System.String)">
+            <summary> Adds a discrete value to the filter values.</summary>
+            <remarks>
+            	<para>The add fails if the FilterItem contains continous values or if the specified
+                value is not in AvailableValues. Please see <see cref="M:Analysis.ApiLib.FilterItem.CheckDiscreteValue(System.String)"> and 
+                <see cref="M:Analysis.ApiLib.FilterItem.CheckContinuousValues(System.String,System.Double,System.Double)"> for details. </see> </see> </para>
+            	<para>
+                    If <see cref="P:Analysis.ApiLib.RunTimeErrors.IsSilentMode">RunTimeErrors.IsSilentMode</see> is
+                    false, then an exception is thrown.
+                </para>
+            </remarks>
+            <returns>true if the value was added</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.AddContinuousValue(Analysis.ApiLib.Dimensions.ContinuousValue)">
+            <summary>Adds a predefined range.</summary>
+            <returns>true if the add successfule</returns>
+            <remarks>
+            	<para>The add fails if the FilterItem contains discrete values or if the specified
+                value is not in AvailableValues.</para>
+            	<para>
+                    If <see cref="P:Analysis.ApiLib.RunTimeErrors.IsSilentMode">RunTimeErrors.IsSilentMode</see> is
+                    false, then an exception is thrown.
+                </para>
+            </remarks>
+            <param name="aValue">The predefined range object.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.AddContinuousValue(System.Double,System.Double)">
+            <summary>Adds a range.</summary>
+            <returns>true if the value is added</returns>
+            <commentsfrom cref="M:Analysis.ApiLib.FilterItem.AddContinuousValue(System.String,System.Double,System.Double)" filter="##REMARKS"/>
+            <param name="aMin">The lower limit</param>
+            <param name="aMax">The upper limit</param>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.AddContinuousValue(System.String,System.Double,System.Double)">
+            <summary>Adds a range.</summary>
+            <commentsfrom cref="M:Analysis.ApiLib.FilterItem.AddContinuousValue(Analysis.ApiLib.Dimensions.ContinuousValue)" filter="##REMARKS"/>
+            <param name="aName">The name of the base dimension.</param>
+            <param name="aMin">The lower limit</param>
+            <param name="aMax">The upper limit</param>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.ToString">
+            <summary>
+            Returns the string representation of this FilterItem object.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.GetConditionalSign">
+            <summary>
+            Returns the SQL symbol for the current ConditionalOperator. 
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.GetConditionalSign(Analysis.ApiLib.FilterItem.FilterItemConditionalOperator)">
+            <summary>
+            Returns the SQL symbol for the specified ConditionalOperator value. 
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.IsDiscreteValues">
+            <summary>Checks whether the FilterItem contains discrete values.</summary>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.IsContinuousValues">
+            <summary>Checks whether the FilterItem contains continuous values.</summary>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.GetValuesKind">
+            <summary>
+            Checks which kind of values is stored in the FilterItem.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.GetValuesSubType">
+            <summary>
+            Returns the  exact type of the filter item values.
+            </summary>
+            <returns>A value of the FilterValuesSubType enum </returns>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.GetAvailableValues">
+            <summary>
+            Returns a list of available values for the current filter item.
+            </summary>
+            <returns>The list of available filter values for the current item</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.FilterItem.ValueIsNotAvailableError(System.String)">
+            <summary>
+            Indicates an error if added value is absent in AvailableValues property
+            </summary>
+            <param name="aMessage"></param>
+        </member>
+        <member name="P:Analysis.ApiLib.FilterItem.Name">
+            <summary>The name of the filter item.</summary>
+            <remarks>
+            	<para>The name indicates the field on which to filter.</para>
+            	<para>This value is read-only.</para>
+            	<para></para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.FilterItem.IsActive">
+            <summary>Indicates whether this filter item is used.</summary>
+            <remarks>
+            	<para>The default is true. If false, the values in the filter item are
+                ignored.</para>
+            	<para>
+                    IsActive values of individual FilterItems are preserved when the the <see cref="P:Analysis.ApiLib.Filter.IsActive">Filter.IsActive</see> is changes, so that if a Filter is
+                    deactivated or reactivated, the IsActive values of the items remain as they
+                    were.
+                </para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.FilterItem.ConditionalOperator">
+            <summary>
+            The comparison operator between the field specified by the Name property and the
+            values.
+            </summary>
+            <remarks>
+            Since user is allowed to add any text when IsLikeCondition(ConditionalOperator) is true
+            Then user can switch to "Equal" and then apply filter, in this case we get a hack of out checks
+            </remarks>
+            <value>
+                A value of the <see cref="T:Analysis.ApiLib.FilterItem.FilterItemConditionalOperator">FilterItemConditionalOperator</see>
+                Enumeration.
+            </value>
+        </member>
+        <member name="P:Analysis.ApiLib.FilterItem.FilterValues">
+            <summary>
+            The collection of those values of AvailableValues that are used in the
+            filter.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.FilterItem.AvailableValues">
+            <summary>The collection of values that are available for the filter to use.</summary>
+        </member>
+        <member name="T:Analysis.ApiLib.FilterItem.FilterItemConditionalOperator">
+            <summary>Possible values for the ConditionalOperator.</summary>
+        </member>
+        <member name="F:Analysis.ApiLib.FilterItem.FilterItemConditionalOperator.Equal">
+            <summary>
+            The field specified by the 
+            <see cref="P:Analysis.ApiLib.FilterItem.Name">Name</see> property 
+            must be equal to one of values from the
+            <see cref="P:Analysis.ApiLib.FilterItem.FilterValues">FilterValues</see> property.
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.FilterItem.FilterItemConditionalOperator.NotEqual">
+            <summary>
+            The field specified by the Name property must not be equal 
+            to any of values from FilterValues property.
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.FilterItem.FilterItemConditionalOperator.Like">
+            <summary>
+            The field specified by the Name property must match the mask
+            in any of values from FilterValues property. Mask is defined by SQL rules.
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.FilterItem.FilterItemConditionalOperator.NotLike">
+            <summary>
+            The field specified by the Name property must not match the mask
+            in any of values from FilterValues property. Mask is defined by SQL rules.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.GeneralSettings">
+            <summary>
+            GeneralSettings Options tab
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.GeneralSettings.#ctor">
+            <summary>
+            Initializes a new instance of GeneralSettings
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GeneralSettings.DateFormat">
+            <summary>
+            Format of Date strings
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GeneralSettings.IsOpenMostRecentlyUsedDirectory">
+            <summary>
+            File Browser - open in a directory that is being used most
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GeneralSettings.DirectoryPath">
+            <summary>
+            File Browser - specified Directory Path.
+            Used when IsOpenMostRecentlyUsedDirectory is false
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GeneralSettings.IsTempStorageUseWindowsTempDirectory">
+            <summary>
+            Temporary storage location - use Windows temporary directory or specified one
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GeneralSettings.TempStorageDirectory">
+            <summary>
+            Directory _filePath to use as a Temporary storage location
+            when IsTempStorageUseWindowsTempDirectory is false
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GeneralSettings.TransactionPercentile">
+            <summary>
+            Summray Report Transaction Percentage
+            An integer number between 1 and 100
+            If we try to assign a number greater than 100 or smaller than 1,
+            TransactionPercentile will become 100 or 1 respectively.
+            TODO: Mention in documentation!
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GeneralSettings.WorstTransactionMaxDisplayCount">
+            <summary>
+            Summary Report - Display Max worst transactions count
+            An integer number between 1 and 100
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GeneralSettings.IsStartPageOnStartUp">
+            <summary>
+            Show Start Page on start up
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.GeneralSettings.DateFormatStyle">
+            <summary>
+            Format of Date strings
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.GeneralSettings.DateFormatStyle.European">
+            <summary>
+            dd/mm/yyyy
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.GeneralSettings.DateFormatStyle.US">
+            <summary>
+            mm/dd/yyyy
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.GraphName">
+            <summary>
+            The name and description of a single Graph.</summary>
+            <remarks>
+            This is read only object.
+            </remarks>
+        </member>
+        <member name="M:Analysis.ApiLib.GraphName.#ctor">
+            <summary>
+            Initializes a new instance of GraphName.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.GraphName.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of GraphName.
+            </summary>
+            <param name="aDescription">description of the graph</param>
+            <param name="aDefFileName">name of the graph definition file</param>
+            <param name="aDisplayName">title of the Graph</param>
+            <param name="aChartGroup">the name of the corresponding Chart group</param>
+        </member>
+        <member name="M:Analysis.ApiLib.GraphName.ToString">
+            <summary>
+            Returns the string representation of the GraphName object.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GraphName.Name">
+            <summary>
+            The unique identifier of the Graph.
+            </summary>
+            <remarks>
+            The name is read-only and independent of locale. This name is used to get the
+            Analysis.Api.Graph derived object.
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.GraphName.DisplayName">
+            <summary>
+            The title of the Graph in the user's locale.
+            </summary>
+            <remarks>
+            The display name is read from the the bin\dat\*.def files. 
+            These files are localized by the user.
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.GraphName.Description">
+            <summary>
+            The description of the Graph. The description changes depending on locale.
+            </summary>
+            <remarks>Read only</remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.GraphName.DefFileName">
+            <summary>
+            Name of the Graph definition file without extension.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GraphName.EventType">
+            <summary>
+            Event Type
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GraphName.EventName">
+            <summary>
+            Event Name
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GraphName.ChartGroup">
+            <summary>
+             Chart Group
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.GraphNames">
+            <summary>The collection of names and descriptions 
+            of the reports available to API applications.</summary>
+            <remarks>
+            <para>This read-only collection persists independently of the Session.</para>
+            <para>For a given Run, only graphs with data are available.</para>
+            </remarks>
+        </member>
+        <member name="M:Analysis.ApiLib.GraphNames.#ctor">
+            <summary>
+            Initializes a new instance of GraphNames
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.GraphNames.SaveToFile(System.String)">
+            <summary>
+            Saves the graph names to the specified text file.
+            </summary>
+            <param name="aFileName">The absolule file path name.</param>
+            <exception cref="T:System.ArgumentNullException">If aFileName is null or empty string</exception>
+        </member>
+        <member name="T:Analysis.ApiLib.GroupBy">
+            <summary>
+                The predefined list of <see cref="T:Analysis.ApiLib.GroupByItem">GroupByItem</see> objects uses to
+                define the data grouping for display.
+            </summary>
+            <remarks>
+            You cannot add new items to the collection. 
+            The collection is used by specifying the items on which 
+            to group.
+            </remarks>
+        </member>
+        <member name="M:Analysis.ApiLib.GroupBy.#ctor">
+            <summary>
+            Initializes a new instance of GroupBy.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.GroupBy.Exits(System.String)">
+            <summary>Checks whether the specified GroupBy item is in the collection.</summary>
+            <param name="aName">The name of the GroupBy item.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.GroupBy.Include(System.String[])">
+            <summary>Includes the specified items in the grouping.</summary>
+            <param name="aNames">Array of the names of the items to include.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.GroupBy.Exclude(System.String[])">
+            <summary>Excludes the specified items from the grouping.</summary>
+            <param name="aNames">Array of the names of the items to exclude.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.GroupBy.IncludeAll">
+            <summary>Includes all available items in the grouping.</summary>
+        </member>
+        <member name="M:Analysis.ApiLib.GroupBy.ExcludeAll">
+            <summary>Removes all available items from grouping.</summary>
+        </member>
+        <member name="M:Analysis.ApiLib.GroupBy.SetItemsActiveState(System.Boolean)">
+            <summary>
+            SetItemsActiveState
+            </summary>
+            <param name="isActive">state to set</param>
+        </member>
+        <member name="M:Analysis.ApiLib.GroupBy.SetItemsActiveState(System.String[],System.Boolean)">
+            <summary>
+            SetItemsActiveState
+            </summary>
+            <param name="isActive">state to set</param>
+            <param name="aNames">Array of the names of the items to exclude into grouping</param>
+        </member>
+        <member name="M:Analysis.ApiLib.GroupBy.ToString">
+            <summary>
+            Returns the string representation of this GroupBy object.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GroupBy.IsActive">
+            <summary>
+            Indicates whether to apply all the GroupBy items (true) or to ignore all the
+            items.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.GroupByItem">
+            <summary>
+            A measurement field on which data is grouped if this item is active.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.GroupByItem.#ctor">
+            <summary>
+            Initializes a new instance of GroupByItem
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.GroupByItem.ToString">
+            <summary>
+            Returns the string representation of this GroupByItem object.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GroupByItem.Name">
+            <summary>The name of the measurement on which to group data.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.GroupByItem.IsActive">
+            <summary><para>Indicates whether to group the data on this measurement.</para></summary>
+            <requirements>
+            	<para>
+                    Methods <see cref="M:Analysis.ApiLib.GroupBy.Include(System.String[])">GroupBy.Include</see> and <see cref="M:Analysis.ApiLib.GroupBy.Exclude(System.String[])">GroupBy.Exclude</see> change the value of this property.
+                </para>
+            </requirements>
+        </member>
+        <member name="T:Analysis.ApiLib.IniCollectionAttribute">
+            <summary>
+            IniCollectionAttribute
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.IniKeyAttribute">
+            <summary>
+            IniKeyAttribute
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.IniKeyAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of IniKeyAttribute
+            </summary>
+            <param name="aKeyName">INI file aKeyName name</param>
+        </member>
+        <member name="M:Analysis.ApiLib.IniKeyAttribute.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of IniKeyAttribute
+            </summary>
+            <param name="aKeyName">INI file aKeyName name</param>
+            <param name="aDefaultValue">aDefault aKeyName value</param>
+        </member>
+        <member name="P:Analysis.ApiLib.IniKeyAttribute.KeyName">
+            <summary>
+            aKeyName name from INI file section
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.IniKeyAttribute.DefaultValue">
+            <summary>
+            aDefault value for ini key
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.IniCollectionAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of IniCollectionAttribute
+            </summary>
+            <param name="aKeyName">Name of a counter key in ini file section.
+            This key contains the number of items in the collection</param>
+        </member>
+        <member name="T:Analysis.ApiLib.IniSectionAttribute">
+            <summary>
+            IniSectionAttribute
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.LoggingLevel">
+            <summary>
+            Log Levels
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.LoggingLevel.NoLogging">
+            <summary>
+            No logging
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.LoggingLevel.ErrorsOnly">
+            <summary>
+            Log Errors only
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.LoggingLevel.ErrorsAndWarnings">
+            <summary>
+            Log Errors and Warnings
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.LoggingLevel.All">
+            <summary>
+            Log information messages and all messages of a higher severity
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Severity">
+            <summary>
+            Message severity levels.
+            </summary>
+            <keywords>Log Severity Levels</keywords>
+        </member>
+        <member name="F:Analysis.ApiLib.Severity.Info">
+            <summary>
+            Information message
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Severity.Warning">
+            <summary>
+            Warning message
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Severity.Error">
+            <summary>
+            Error message
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Severity.Exception">
+            <summary>
+            Exception message
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.MeasurementKind">
+            <summary>
+            The measuremnt type
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.MeasurementData">
+            <summary>
+            This class describes measurement in "Hierarchical Tree Path" <seealso cref="T:Analysis.ApiLib.MeasurementTreePath"/>
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.MeasurementData.DEFAULT_NAME_SEPARATOR">
+            <summary>
+            The default name separator used in <see cref="M:Analysis.ApiLib.MeasurementData.GetFullName"/>.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.MeasurementData.GetFullName(System.String,System.Boolean)">
+            <summary>
+            Returns the names of all parents, delimited by the specified seperator.
+            Optionally includes name of current object.
+            </summary>
+            <remarks>
+            The resulting string is in the following format:
+            "Root parent" "aSeparator" "Parent N" ... "Parent 1" "aSeparator" "this.Name"
+            For example if aSeparator == "->" then the resulting string will be:
+            "Action Transaction->login->book"
+            Where the "book" is the name of the current object.
+            </remarks>
+            <param name="aSeparator">The separator between names</param>
+            <param name="aOnlyParentNames">false - include the name of the current object; 
+                        true - return only names of parents</param>
+            <returns>A string containing all the parents' names and optionally, the name of the object.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Analysis.ApiLib.MeasurementData.GetFullName" -->
+        <member name="M:Analysis.ApiLib.MeasurementData.GetParentName">
+            <summary>
+            Returns the name of the first parent.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Analysis.ApiLib.MeasurementData.Id">
+            <summary>
+            Id of the measurement. This id is used in "Tree path" filters of the graphs.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.MeasurementData.Name">
+            <summary>
+            The name of the measurement.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.MeasurementData.ParentId">
+            <summary>
+            The parent id of the current measurement in the tree hierarchy. The value -1 means that there is no parent.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.MeasurementTreePath">
+            <summary>
+            The dictionary of the "Tree Path" measurements.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.MeasurementTreePath.Remove(Analysis.ApiLib.MeasurementData)">
+            <summary>
+            Removes an item from this collection.
+            </summary>
+            <param name="item">Item to remove</param>
+        </member>
+        <member name="M:Analysis.ApiLib.MeasurementTreePath.FindById(System.Int32)">
+            <summary>
+            Returns the object with the specified ID from the the <see cref="T:Analysis.ApiLib.MeasurementData"/> object.
+            </summary>
+            <remarks>
+            This method finds the object whose <see cref="P:Analysis.ApiLib.MeasurementData.Id"/> is  to the aId argument.
+            </remarks>
+            <param name="aId">The id of the object to find</param>
+            <returns>Returns the object with the specified ID. If not found, returns null.</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.MeasurementTreePath.FindByName(System.String,System.Collections.Generic.List{Analysis.ApiLib.MeasurementData})">
+            <summary>
+            Searches all measurements with name aName and puts them in aValues list
+            </summary>
+            <param name="aName">Name to search</param>
+            <param name="aValues">The list in which will be placed all values with specified name</param>
+        </member>
+        <member name="M:Analysis.ApiLib.MeasurementTreePath.GetWithParents(System.Int32,System.Collections.Generic.List{Analysis.ApiLib.MeasurementData})">
+            <summary>
+            Gets the list of the object having the specifed ID and all its parents up to the root of the tree.
+            </summary>
+            <param name="aId">The id of the object. 
+            </param>
+            <param name="aList">The output list containing the object and its parents.</param>
+        </member>
+        <member name="T:Analysis.ApiLib.Options">
+            <summary>Contains global options for all Analysis API methods.</summary>
+            <remarks>
+            	<para>The options in the <tt>Tools|Options</tt> dialog in the Analysis user
+                interface can be accessed with this object.</para>
+            	<para>Options is a singleton.</para>
+            </remarks>
+        </member>
+        <member name="M:Analysis.ApiLib.Options.#ctor">
+            <summary>
+            Initializes a new instance of Options
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Options.Load">
+            <summary>
+            Reads the saved settings into the object. This method called by the constructor. 
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Options.Save">
+            <summary>
+            Saves all options to the file system.
+            </summary>
+            <remarks>Call this method after changing a property value.</remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.Options.General">
+            <summary>
+            The options available on the general settings tab in the options dialog.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Options.ResultCollection">
+            <summary>
+            The options available on the result collection tab in the options dialog.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Options.Database">
+            <summary>
+            The options available on the database tab in the options dialog.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Options.WebPageDiagnostics">
+            <summary>
+            The options available on the web page diagnostics tab in the options dialog.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.ResultCollectionSettings">
+            <summary><para>The result collection options.</para></summary>
+            <remarks>
+            These options are accessed in the user interface on the result collections tab
+            under <tt>Tools | Options</tt>.
+            </remarks>
+        </member>
+        <member name="F:Analysis.ApiLib.ResultCollectionSettings.GRANULARITY_LIMIT_NO_VUSERID">
+            <summary>Returns the minimum data aggregation granularity in seconds.</summary>
+            <remarks>If aggregation is not used, this constant is ignored.</remarks>
+        </member>
+        <member name="M:Analysis.ApiLib.ResultCollectionSettings.#ctor">
+            <summary>
+            Initializes a new instance of ResultCollectionSettings
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataSource">
+            <summary>The data source parsing style.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregation">
+            <summary>The data aggregation style.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.UserDefinedAggregation">
+            <summary>The user-defined data aggregation configuration.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.IsEntireScenarioDataTimeRange">
+            <summary>
+            Indicates whether the data is taken from the entire duration of the
+            scenario.
+            </summary>
+            <remarks><para>If false, the time range must be specified.</para></remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.ScenarioTimeFrom">
+            <summary>
+            The offset from the beginning of the scenario run at which to start
+            analysis.
+            </summary>
+            <remarks>If <tt>IsEntireScenarioDataTimeRange</tt> is true, analysis starts at this offset.</remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.ScenarioTimeTo">
+            <summary>
+            The offset from the beginning of the scenario run at which to end
+            analysis.
+            </summary>
+            <remarks>
+            If <tt>IsEntireScenarioDataTimeRange</tt> is true, analysis ends at this
+            offset.
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.CopyControllerOutputMessages">
+            <summary>The style for copying controller output messages to the Analysis session.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataSetMaxSizeToCopy">
+            <summary>
+            The data-set size limit (MB) for copying control output messages to the analysis
+            session.
+            </summary>
+            <remarks>
+            If the data set is equal to or larger than this value, messages are not
+            copied.
+            </remarks>
+        </member>
+        <member name="T:Analysis.ApiLib.ResultCollectionSettings.DataSourceParsingStyle">
+            <summary>The data source parsing style.</summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ResultCollectionSettings.DataSourceParsingStyle.DisplaySummaryGenerateCompleteData">
+            <summary>
+            Display the summary while generating complete data
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ResultCollectionSettings.DataSourceParsingStyle.GenerateSummaryDataOnly">
+            <summary>
+            Generate summary data only
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ResultCollectionSettings.DataSourceParsingStyle.GenerateCompleteDataOnly">
+            <summary>
+            Generate complete data only
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.ResultCollectionSettings.DataAggregationStyle">
+            <summary>The data aggregation style.</summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ResultCollectionSettings.DataAggregationStyle.AllData">
+            <summary>
+            Aggregate all Data
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ResultCollectionSettings.DataAggregationStyle.WebDataOnly">
+            <summary>
+            Aggregate Web Data only
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ResultCollectionSettings.DataAggregationStyle.UserDefined">
+            <summary>
+            User-defined aggregation
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.ResultCollectionSettings.OutputMessagesCopyStyle">
+            <summary>The style for copying Controller output messages to the Analysis session.</summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ResultCollectionSettings.OutputMessagesCopyStyle.CopyAlways">
+            <summary>
+            Always copy Controller output messages
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ResultCollectionSettings.OutputMessagesCopyStyle.CopyDataSetSmallerThan">
+            <summary>
+            Copy Controller output messges if dataset is smaller than user-defined size
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.ResultCollectionSettings.OutputMessagesCopyStyle.CopyNever">
+            <summary>
+            Never copy Controller output messages
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration">
+            <summary>The data aggregation configuration.</summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of DataAggregationConfiguration
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.IsAggregateWebDataOnly">
+            <summary>
+            Indicates whether to aggregate only web data. If true, aggregation is not
+            performed on non-web data.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.IsTransactionsAggregationEnabled">
+            <summary>Indicates whether to aggregate transactions.</summary>
+            <remarks><para class="MsoPlainText" style="MARGIN: 0in 0in 0pt"></para></remarks>
+            <notes>
+                Original:
+                IsTransactionsAggregationEnabled Aggregate Transactions (Response
+                time, Per second)
+            </notes>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.IsWebDataAggregationEnabled">
+            <notes>
+            Aggregate Web (Hits per second, Throughput, Pages per second, HTTP return
+            codes)
+            </notes>
+            <summary>Indicates whether to aggregate web data.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.IsMonitorsAggregationEnabled">
+            <summary>Indicates whether to aggregate monitors data.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.IsDataPointsAggregationEnabled">
+            <summary>Indicates whether to aggregate data points.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.IsScriptErrorsAggregationEnabled">
+            <summary>Indicates whether to aggregate script error data.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.IsVUserIDAggregationEnabled">
+            <notes>
+            Aggregate Graph properties - VUserID if being set to false - also sets
+            Granularity to 120 limit but allows setting greater value
+            </notes>
+            <summary>Indicates whether to aggregate Vuser IDs.</summary>
+            <remarks>By default, the granularity is set to 120. This value is configurable.</remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.IsGroupNameAggregationEnabled">
+            <summary>Indicates whether to aggregate group names.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.IsScriptNameAggregationEnabled">
+            <summary>Indicates whether to aggregate script names.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.IsFailedVUsersAggregationDisabled">
+            <summary>Indicates whether to report individual failed Vusers without aggregation.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.Granularity">
+            <summary>The aggregation granularity for non-web data.</summary>
+            <remarks>
+            	<para>If <tt>IsVUserIDAggregationEnabled</tt> is false, the value is in seconds.
+                The minimum granularity is 120 seconds.</para>
+            	<para>If <tt>IsVUserIDAggregationEnabled</tt> is true, the value is in number
+                of Vusers.</para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.ResultCollectionSettings.DataAggregationConfiguration.WebGranularity">
+            <summary>The aggregation granularity (seconds) for web data.</summary>
+        </member>
+        <member name="T:Analysis.ApiLib.RunTimeErrors">
+            <summary>Information about the most recent run time error.</summary>
+            <remarks>
+            	<para>When an error occurs, the data about the previous error is destroyed.</para>
+            	<para>The data in this object is reliable until a successful method
+             invocation.</para>
+            </remarks>
+        </member>
+        <member name="M:Analysis.ApiLib.RunTimeErrors.#ctor">
+            <summary>
+            Initializes a new instance of RunTimeErrors
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.RunTimeErrors._lastErrorCode">
+            <summary>The error code of the most recent error.</summary>
+        </member>
+        <member name="F:Analysis.ApiLib.RunTimeErrors._lastErrorMessage">
+            <summary>The description of the most recent error.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.RunTimeErrors.IsSilentMode">
+            <summary>Indicates whether the program continues running on error.</summary>
+            <remarks>
+            	<para>If <tt>IsSilentMode</tt> is true, this object's data is populated when an
+             error occurs, but no exception is thrown.</para>
+            	<para>If false, the object data is populated and an exception is thrown.</para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.RunTimeErrors.LastErrorCode">
+            <summary>The error code of the most recent error.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.RunTimeErrors.LastErrorMessage">
+            <summary>The description of the most recent error.</summary>
+        </member>
+        <member name="T:Analysis.ApiLib.SeriesAttributes">
+            <summary>
+            The collection of SeriesAttributeValue items
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.SeriesAttributes.NAMES_DELIMITER">
+            <summary>
+            The mark between names.
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.SeriesAttributes.MEASUREMENTS_ALL">
+            <summary>
+            The series name if the SeriesAttributes Collection Count is 0
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.SeriesAttributes.#ctor">
+            <summary>
+            Initializes a new instance of SeriesAttributes
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.SeriesAttributes.AddAttr(System.String,System.Object,System.Boolean)">
+            <summary>
+            Adds a new SeriesAttributeValue Item to this SeriesAttributes collection.
+            </summary>
+            <param name="aName">Name of the SeriesAttributeValue Item to add</param>
+            <param name="aValue">Value of the SeriesAttributeValue Item</param>
+            <param name="aUseInFilter">true to use SeriesAttributeValue in filter in SeriesInfo</param>
+            <returns>Newly created and added SeriesAttributeValue Item</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.SeriesAttributes.GetSeriesName(System.Boolean)">
+            <summary>
+            Builds the Series name based on the current state of this SeriesAttributes Collection.
+            </summary>
+            <param name="aIncludeNamePrefix">true to include the name in the SeriesAttributeValue.
+            For example, name=value</param>
+            <returns>Series Name string</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.SeriesAttributes.SameValues(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Object})">
+            <summary>
+            Checks that a list of attribute values match the values in the current list of attributes.
+            </summary>
+            <remarks>
+            The attribute names are passed in aAttrNames and the values to match
+            are passed in <paramref name="aAttrValues"/>. The value for each attribute is in the same
+            position in <paramref name="aAttrValues"/> as the attribute is in <paramref name="aAttrNames"/>.
+            </remarks>
+            <param name="aAttrNames">A list of attribute names. 
+            </param>
+            <param name="aAttrValues">A list of attribute's values</param>
+            <returns>true if all attributes in the list are in the current list of attributes and 
+            the specifed values match those in the current list of attributes. </returns>
+        </member>
+        <member name="T:Analysis.ApiLib.SeriesAttributeValue">
+            <summary>
+            The value of one GroupByItem.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.SeriesAttributeValue.#ctor(System.String,System.Object,System.Boolean)">
+            <summary>
+            Initializes a new instance of SeriesAttributeValue
+            </summary>
+            <param name="aName">Name of the parent GroupByItem</param>
+            <param name="aValue">Value of the GroupByItem</param>
+            <param name="aUseInFilter">true to use attribute in filter in SeriesInfo. 
+            This property added to support [Filter data].SingleEvent key in *.def file</param>
+        </member>
+        <member name="M:Analysis.ApiLib.SeriesAttributeValue.ToString">
+            <summary>
+            Returns the string representation of the SeriesAttributeValue object.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.SeriesAttributeValue.GetPartOfSeriesName(System.Boolean)">
+            <summary>
+            Returns the string representation of the value.
+            </summary>
+            
+            <param name="aIncludeNamePrefix">
+            <para>If true, returns the 
+            name and value in the format <tt>'name=value'.</tt>
+            </para><para>
+            If false returns only the string representation of the value.
+            </para>
+            </param>
+            <returns></returns>
+        </member>
+        <member name="P:Analysis.ApiLib.SeriesAttributeValue.Name">
+            <summary>
+            The name of the parent GroupByItem.
+            </summary>
+            <remarks>The name defines the type of the value.</remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.SeriesAttributeValue.Value">
+            <summary>
+            The value of the GroupByItem.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.SeriesAttributeValue.UseInFilter">
+            <summary>
+            If false then attribute mustn't be used in the filter
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaAbstractTransactionRulesList`1">
+             <summary>
+            Abstract class for holding transactions related rules
+             </summary>
+             <typeparam name="RuleType"></typeparam>
+        </member>
+        <member name="M:Analysis.ApiLib.Sla.SlaAbstractTransactionRulesList`1.FindTransaction(System.String)">
+            <summary>
+            Returns the index of the rule with the specified transaction name.
+            </summary>
+            <param name="aTransactionName">The name of the transaction to find</param>
+            <returns>The index of the rule with the specified transaction name. If transaction not found, returns -1.</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.Sla.SlaAbstractTransactionRulesList`1.ContainsTransaction(System.String)">
+            <summary>
+            Checks if the transaction exists in the collection.
+            </summary>
+            <param name="aTransactionName">The name of the transaction to find</param>
+            <returns>true if rule with specified name exists in the list</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.Sla.SlaAbstractTransactionRulesList`1.GetTransaction(System.String)">
+            <summary>
+            Returns the rule by its transaction name
+            </summary>
+            <param name="aTransactionName">The name of the transaction</param>
+            <returns>Rule object with the specified transaction name. If not found in list, returns null</returns>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaAbstractTransactionRulesList`1.Count">
+            <summary>
+            The number of rules in the list
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaAbstractTransactionRulesList`1.Item(System.Int32)">
+            <summary>
+            Returns a rule by index.
+            </summary>
+            <param name="aIndex">The index of the rule in the collection</param>
+            <returns>The rule at the specified index. If index is out of range, throws exception</returns>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaRuleStatus">
+            <summary>
+            The status of the SLA rule
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaRuleStatus.Failed">
+            <summary>
+            The SLA rule has failed
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaRuleStatus.Passed">
+            <summary>
+            The SLA rule has passed
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaRuleStatus.NoData">
+            <summary>
+            There is no data for the SLA rule
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaMeasurement">
+            <summary>
+            The measurement defined in SLA rule
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaMeasurement.AverageTRT">
+            <summary>
+            Average Transaction response time (Status per time interval)
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaMeasurement.PercentileTRT">
+            <summary>
+            Percentile Transaction response time (Status per run)
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaMeasurement.ErrorsPerSecond">
+            <summary>
+            Errors per Second (Status per time interval)
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaMeasurement.TotalHits">
+            <summary>
+            Total hits (Status per run)
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaMeasurement.AverageHitsPerSecond">
+            <summary>
+            Average Hits per Second (Status per run)
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaMeasurement.TotalThroughput">
+            <summary>
+            Total throughput (bytes) (Status per run)
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaMeasurement.AverageThroughput">
+            <summary>
+            Average Throughput (Status per run)
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaCriteriaMeasurement">
+            <summary>
+            The criteria measurement used in time range rules.
+            Actuall it defines the units of the value specified in SlaTimeRangeInfo.LoadValue property 
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaCriteriaMeasurement.None">
+            <summary>
+            No criteria defined
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaCriteriaMeasurement.RunningVusers">
+            <summary>
+            Running Vusers criteria
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaCriteriaMeasurement.Throughput">
+            <summary>
+            Throughput
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaCriteriaMeasurement.HitsPerSecond">
+            <summary>
+            The number of hits per second
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaCriteriaMeasurement.TxPerSecond">
+            <summary>
+            Transactions per second
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaCriteriaMeasurement.TxPerSecondPassed">
+            <summary>
+            Passed transactions per second
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaAggregationType">
+            <summary>
+            The aggregation type in simple rule result
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaAggregationType.Average">
+            <summary>
+            Average
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.Sla.SlaAggregationType.Total">
+            <summary>
+            Total
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaLoadThreshold">
+            <summary>
+            The threshold value
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaLoadThreshold.EndLoadValue">
+            <summary>
+            End of the load value
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaLoadThreshold.StartLoadValue">
+            <summary>
+            Start of the load value
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaLoadThreshold.ThresholdValue">
+            <summary>
+            Threshold value for the specified range
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaLoadThresholdList">
+            <summary>
+            The threshold list.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaPercentileRuleResult">
+            <summary>
+            Represents the SLA rule for the Percentile Transaction Response time.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaWholeRunRuleResult">
+            <summary>
+            The results of the SLA rule for the whole run
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaRuleResult">
+            <summary>
+            The result for the single SLA rule.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaRuleResult.Measurement">
+            <summary>
+            The measurement defined in the SLA rule
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaRuleResult.RuleName">
+            <summary>
+            The name of the rule
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaRuleResult.RuleUiName">
+            <summary>
+            The UI name of the rule
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaRuleResult.Status">
+            <summary>
+            The status of the SLA rule
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaWholeRunRuleResult.Status">
+            <summary>
+            The status of the SLA rule
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaWholeRunRuleResult.ActualValue">
+            <summary>
+            The actual value detected in the run
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Analysis.ApiLib.Sla.SlaWholeRunRuleResult.GoalValue" -->
+        <member name="P:Analysis.ApiLib.Sla.SlaPercentileRuleResult.Percentage">
+            <summary>
+            The number of percent at which the rule should take the actual value
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaPercentileRuleResult.TransactionName">
+            <summary>
+            The name of the transaction.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaPercentileRuleResultList">
+            <summary>
+            The list of transactions-related rules 
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaResult">
+            <summary>
+            The results of the SLA rules
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaResult.TimeRangeRules">
+            <summary>
+            The list of SLA rules' results for the time range rules
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaResult.WholeRunRules">
+            <summary>
+            The list of SLA rules' results for the whole run rules
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaResult.IsEmpty">
+            <summary>
+            Returns true if there are no results in the SLA result.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaResult.TransactionRules">
+            <summary>
+            The transaction related rules
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaResult.TrackingPeriodInSec">
+            <summary>
+            Returns the tracking period in seconds for the time-range based rules.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaSimpleRuleResult">
+            <summary>
+            The results of the SLA rule for the entire run
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaSimpleRuleResult.AggFunction">
+            <summary>
+            The aggregation type used for the rule calculation
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaTimeRangeInfo">
+            <summary>
+            The SLA status for a single time range
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTimeRangeInfo.EndTime">
+            <summary>
+            End time of the range in seconds
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTimeRangeInfo.StartTime">
+            <summary>
+            Start time of the range in seconds
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTimeRangeInfo.GoalValue">
+            <summary>
+            The goal value defined in the SLA rule
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTimeRangeInfo.ActualValue">
+            <summary>
+            The actual value in the run
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTimeRangeInfo.LoadValue">
+            <summary>
+            The load value related to the current time range
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTimeRangeInfo.Status">
+            <summary>
+            The final SLA status of the rule
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaTimeRangeList">
+            <summary>
+            The list of SLA statuses per time range.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaTimeRangeRuleResult">
+            <summary>
+            The rules that split the run into time buckets and show the SLA status for each bucket.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTimeRangeRuleResult.CriteriaMeasurement">
+            <summary>
+            The ctiteria measurement
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTimeRangeRuleResult.TimeRanges">
+            <summary>
+            The time range buckets. 
+            </summary>
+            <remarks>
+            Each bucket has an SLA status. The rule passed if all its buckets have passed.
+            </remarks>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTimeRangeRuleResult.LoadThresholds">
+            <summary>
+            The thresholds valuies defined in the SLA rule
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTimeRangeRuleResult.Status">
+            <summary>
+            The status of the SLA rule.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaTimeRangeRuleResultList">
+            <summary>
+            The list of SLA rules results per time range
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaTransactionRules">
+            <summary>
+            Incapsulates transaction related rules and provides a convenient way to work with transactions.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.Sla.SlaTransactionRules.GetTransactionStatus(System.String)">
+            <summary>
+            Calculates the status of the transaction SLA status
+            </summary>
+            <param name="aTransactionName">The name of the transaction</param>
+            <returns>The SLA status of the transaction. If transaction not found, returns SlaRuleStatus.NoData</returns>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTransactionRules.PercentileRules">
+            <summary>
+            The list of percentile rules
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTransactionRules.TimeRangeRules">
+            <summary>
+            Transaction rules based on time range status
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaTransactionTimeRangeRuleResult">
+            <summary>
+            The rules that split the entire run into time buckets and show the SLA status for each bucket.
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.Sla.SlaTransactionTimeRangeRuleResult.TransactionName">
+            <summary>
+            The name of the transaction.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaTransactionTimeRangeRuleResultList">
+            <summary>
+            The list of transactions related rules 
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.Sla.SlaWholeRunRuleResultList">
+            <summary>
+            The list of SLA rule results for the whole run
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.StatisticsFunctionKind">
+            <summary>
+            The type of Statistical function
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.StatisticsFunctionKind.Minimum">
+            <summary>
+            Minimum value
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.StatisticsFunctionKind.Maximum">
+            <summary>
+            Maximum value
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.StatisticsFunctionKind.Average">
+            <summary>
+            Average value
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.StatisticsFunctionKind.StdDeviation">
+            <summary>
+            Standard deviation
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.StatisticsFunctionKind.Count">
+            <summary>
+            Total number of values
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.StatisticsFunctionKind.Sum">
+            <summary>
+            Sum of all values
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.StatisticsFunctionKind.Median">
+            <summary>
+            Median of all values
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.ApiCustomCollection`1">
+            <summary>
+            Parameterized collection of items.
+            In addition to ApiCustomReadOnlyCollection provides Clear and RemoveAt methods
+            </summary>
+            <typeparam name="T">Any object type to store in the collection</typeparam>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomCollection`1.#ctor">
+            <summary>
+            Initializes a new instance of ApiCustomCollection
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomCollection`1.Clear">
+            <summary>
+            Removes all Items from list
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiCustomCollection`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes the Item at the specified index
+            </summary>
+            <param name="aIndex">Index of the Item to remove</param>
+        </member>
+        <member name="T:Analysis.ApiLib.ApiLoaderException">
+            <summary>
+            Exception during Result Loading process or Session creation.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiLoaderException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of ApiLoaderException
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiLoaderException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of ApiLoaderException
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception</param>
+        </member>
+        <member name="T:Analysis.ApiLib.ApiUnsupportedTypeException">
+            <summary>
+            The type of a property of the INI file-aware object is not supported.
+            The property value cannot be read from INI file.
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiUnsupportedTypeException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of ApiUnsupportedTypeException
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.ApiUnsupportedTypeException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of ApiUnsupportedTypeException
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception</param>
+        </member>
+        <member name="M:Analysis.ApiLib.StringUtils.AddBrackets(System.String)">
+            <summary>
+            Adds brakets if needed
+            </summary>
+            <param name="aStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.ApiLib.StringUtils.StringToDouble(System.String)">
+            <summary>
+            Converts correctly strings with "." (dot) and "," (comma)
+            </summary>
+            <param name="aValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.ApiLib.StringUtils.ProcessEscSequence(System.String,System.Boolean)">
+            <summary>
+            This function is ported from Lra_Functions.StrChangeFromEscapeSequence
+            </summary>
+            <param name="Str"></param>
+            <param name="HiddenComma"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Analysis.ApiLib.TemplateDefinition">
+            <summary>
+            The definition of the analysis template
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.TemplateDefinition.GetTemplateFileName">
+            <summary>
+            Returns the name of the *.tem file 
+            </summary>
+            <returns>the name of the *.tem file</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.TemplateDefinition.Exists">
+            <summary>
+            Checks if *.tem file exists
+            </summary>
+            <returns>true if template file exists</returns>
+        </member>
+        <member name="P:Analysis.ApiLib.TemplateDefinition.Name">
+            <summary>
+            The name of the template
+            </summary>
+        </member>
+        <member name="P:Analysis.ApiLib.TemplateDefinition.Folder">
+            <summary>
+            The path containing the template
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.TemplateManager">
+            <summary>
+            The list of available templates
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.TemplateManager._defaultTemplate">
+            <summary>
+            The reference to default template
+            </summary>
+        </member>
+        <member name="M:Analysis.ApiLib.TemplateManager.HasTemplate(System.String)">
+            <summary>
+            Checks if list contains specified template.
+            </summary>
+            <param name="aTemplateName">The name of the template</param>
+            <returns>true if template exists in the list</returns>
+        </member>
+        <member name="M:Analysis.ApiLib.TemplateManager.InternalApplyTemplate(System.String,System.String)">
+            <summary>
+            Applies the template to the session
+            </summary>
+            <param name="aSessionName">The name of the LRA file with Analysis session to which template is applied</param>
+            <param name="aTemplateFileName">The name of the template file (*.tem) to apply.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.TemplateManager.ApplyTemplate(System.String,System.String)">
+            <summary>
+            Applies the template to the session
+            </summary>
+            <param name="aSessionName">The name of the LRA file with Analysis session to which template is applied</param>
+            <param name="aTemplateName">The name of the template to apply. Must exist in the current list of templates.</param>
+        </member>
+        <member name="M:Analysis.ApiLib.TemplateManager.ApplyTemplateFile(System.String,System.String)">
+            <summary>
+            Applies the template to the session
+            </summary>
+            <param name="aSessionName">The name of the LRA file with Analysis session to which template is applied</param>
+            <param name="aTemplateFileName">The name of the template file (*.tem) to apply to the session.</param>
+        </member>
+        <member name="P:Analysis.ApiLib.TemplateManager.DefaultTemplate">
+            <summary>
+            The default template. If no default template, returns null.
+            </summary>
+        </member>
+        <member name="T:Analysis.ApiLib.WebPageDiagnosticsSettings">
+            <summary>The web page diagnostics settings.</summary>
+        </member>
+        <member name="M:Analysis.ApiLib.WebPageDiagnosticsSettings.#ctor">
+            <summary>Initializes a new instance of WebPageDiagnosticsSettings.</summary>
+        </member>
+        <member name="P:Analysis.ApiLib.WebPageDiagnosticsSettings.DynamicUrlAggregation">
+            <summary>The dynamic URL aggregation style.</summary>
+            <value>
+                A value of the <see cref="T:Analysis.ApiLib.WebPageDiagnosticsSettings.DynamicUrlAggregationStyle">DynamicUrlAggregationStyle
+                Enumeration</see>.
+            </value>
+        </member>
+        <member name="T:Analysis.ApiLib.WebPageDiagnosticsSettings.DynamicUrlAggregationStyle">
+            <summary>
+            Dynamic URL Aggregation Style
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.WebPageDiagnosticsSettings.DynamicUrlAggregationStyle.DisplayIndividualUrls">
+            <summary>
+            Display individual URLs
+            </summary>
+        </member>
+        <member name="F:Analysis.ApiLib.WebPageDiagnosticsSettings.DynamicUrlAggregationStyle.DisplayAverageOfMergedUrls">
+            <summary>
+            Display average of all merged URLs
+            </summary>
+        </member>
+    </members>
+</doc>

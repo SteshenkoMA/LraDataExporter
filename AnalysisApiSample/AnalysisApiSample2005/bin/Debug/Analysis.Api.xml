@@ -1,0 +1,3543 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Analysis.Api</name>
+    </assembly>
+    <members>
+        <member name="P:Analysis.Api.ApiBaseNotifierImplementation.Sender">
+            <summary>
+            This object will be passed to ProgressEvent delegate as sender parameter.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.ApiBaseNotifierImplementation.Data">
+            <summary>
+            This data will be passed to the StatusEvent delegate
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.ApiGlobalFilter">
+            <summary>
+            The global filter.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.ApiGlobalFilter.#ctor(Analysis.Api.Session,Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of ApiGlobalFilter
+            </summary>
+            <param name="aSession">The Analysis Session</param>
+            <param name="aSessionInfo">The SessionInfo</param>
+        </member>
+        <member name="M:Analysis.Api.ApiGlobalFilter.GetFilterItem(System.String)">
+            <summary>
+            Returns the specified filter item.
+            </summary>
+            <param name="aName">Name of the Filter Item </param>
+        </member>
+        <member name="M:Analysis.Api.ApiGlobalFilter.ApplyFilter">
+            <summary>
+            Applies the Filter.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.ApiGlobalFilter.Filter">
+            <summary>
+            The global filter object for the session.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.ApiGlobalFilter.ScenarioElapsedTime">
+            <summary>
+            Scenario Elapsed Time filter item
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.ApiGlobalFilter.ThinkTime">
+            <summary>
+            Think Time filter item
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.ApiGlobalFilter.IncludeThinkTime">
+            <summary>
+            Indicates whether Think Time is included.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.ApiStatusNotifierImplementation.CreateNotificationData">
+            <summary>
+            Creates an instance of NotificationStatusData
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.ApiStatusNotifierImplementation.StatusEvent">
+            <summary>
+            This delegete will be fired each time some method of IProgress interface is called
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Graph">
+            <summary>
+            Describes a single graph.
+            </summary>
+            <remarks>
+                A Graph is a collection of <see cref="P:Analysis.Api.Graph.Series">Series</see> objects. The number of
+                Series object and the particular Series users depends on the graph type, the
+                current <see cref="T:Analysis.ApiLib.Filter">Filter</see>, and the current <see cref="T:Analysis.ApiLib.GroupBy">GroupBy</see>.
+            </remarks>
+        </member>
+        <member name="T:Analysis.Api.ApiBase">
+            <summary>
+            The base class for all Analysis item objects.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.ApiBase.#ctor(Analysis.Api.LrAnalysis)">
+            <summary>
+            Initializes a new instance of ApiBase.
+            </summary>
+            <param name="aLraRoot">Root object in Analysis API</param>
+        </member>
+        <member name="P:Analysis.Api.ApiBase.LrAnalysisRoot">
+            <summary>
+            The root object in any Analysis API application.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Graph.#ctor(Analysis.Api.LrAnalysis)">
+            <summary>
+            Initializes a new instance of Graph.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Graph.GetFilter">
+            <summary>
+            Abstract.
+            If overridden in derived class, gets Filter for this Graph.
+            </summary>
+            <returns>Filter for this Graph</returns>
+        </member>
+        <member name="M:Analysis.Api.Graph.GetDataOptimization">
+            <summary>
+            Abstract.
+            Returns the data optimization mode used for this Graph.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.Api.Graph.SetDataOptimization(Analysis.ApiLib.DataOptimization)">
+            <summary>
+            Abstract.
+            Sets the data optimization mode used for this Graph.
+            </summary>
+            <param name="aValue"></param>
+        </member>
+        <member name="M:Analysis.Api.Graph.GetGroupBy">
+            <summary>
+            Abstract.
+            If overridden in derived class, gets the GroupBy for this Graph.
+            </summary>
+            <returns>GroupBy for this Graph</returns>
+        </member>
+        <member name="M:Analysis.Api.Graph.GetGraphName">
+            <summary>
+            Abstract.
+            If overridden in derived class, gets the GraphName for this Graph.
+            </summary>
+            <returns>GraphName for this Graph</returns>
+        </member>
+        <member name="M:Analysis.Api.Graph.GetGranularity">
+            <summary>
+            Abstract.
+            If overridden in derived class, gets the Granularity for this Graph.
+            </summary>
+            <returns>Granularity for this Graph</returns>
+        </member>
+        <member name="M:Analysis.Api.Graph.SetGranularity(System.Int32)">
+            <summary>
+            Abstract.
+            If overridden in derived class, sets the Granularity for this Graph.
+            </summary>
+            <param name="aGranularity">Granularity to be set for this Graph</param>
+        </member>
+        <member name="M:Analysis.Api.Graph.GetSeriesList">
+            <summary>
+            Abstract.
+            If overridden in derived class, gets the list of Series of this Graph.
+            </summary>
+            <returns>List of Series of this Graph</returns>
+        </member>
+        <member name="M:Analysis.Api.Graph.InternalApplyFilterAndGroupBy">
+            <summary>
+            Abstract.
+            If overridden in derived class, applies Filter and GroupBy.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Graph.GetHasTimeAxis">
+            <summary>
+            Abstract.
+            If overridden in derived class, checks whether this Graph has a time axis.
+            </summary>
+            <returns>True if this Graph has time axis, otherwise false</returns>
+        </member>
+        <member name="M:Analysis.Api.Graph.ApplyFilterAndGroupBy">
+            <summary>
+            Your application must call this method after changing values of the GroupBy and
+            Filter properties,
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Graph.IsPercentileGraph">
+            <summary>Checks whether this is a percentile graph.</summary>
+            <remarks>
+            	<see cref="P:Analysis.Api.SeriesPoint.RelativeTime">SeriesPoint.RelativeTime</see> for percentile
+                graphs contains the percent of the total run up to the point. With a percentile
+                graph, it is impossible to access the Series data with <see cref="M:Analysis.Api.Series.GetPointsIterator">Series.GetPointsIterator</see>. Use the <see cref="P:Analysis.Api.Series.Points">Series.Points</see> collection.
+            </remarks>
+        </member>
+        <member name="M:Analysis.Api.Graph.IsRawStatisticsExists">
+            <summary>
+            Checks whether data exists for the graph.
+            </summary>
+            <remarks>
+            Returns true if raw statistics exist for graph and 
+            property Series.RawStatistics contains relevant data. 
+            Returns false if no raw statistics are found. 
+            </remarks>
+        </member>
+        <member name="M:Analysis.Api.Graph.CanTransposeSeries">
+            <summary>
+            Determines the possibility to make transpose of the series
+            </summary>
+            <returns>true - is series can be transposed</returns>
+        </member>
+        <member name="M:Analysis.Api.Graph.CreateTransposedSeries">
+            <summary>
+            Transposes the series of the graph. 
+            </summary>
+            <returns>The list of the transposed series. If <see cref="M:Analysis.Api.Graph.CanTransposeSeries">CanTransposeSeries()</see> 
+            returns false, then this method returns null.
+            </returns>
+        </member>
+        <member name="P:Analysis.Api.Graph.Filter">
+            <summary>The current <see cref="T:Analysis.ApiLib.Filter">Filter</see>.</summary>
+            <remarks>
+                The Filter can limit the number of available <see cref="P:Analysis.Api.Graph.Series">Series</see>
+                objects in graph. It does not change the names of the series.
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.Graph.DataOptimization">
+            <summary>
+            Defines the data optimization for this Graph. 
+            </summary>
+            <remarks>Initialized by default from LrAnalysis.DefaultOptimizationMode.
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.Graph.GroupBy">
+            <summary>The current <see cref="T:Analysis.ApiLib.GroupBy">GroupBy Class</see>.</summary>
+            <remarks>
+            Adding items to GroupBy can change the number and names of the series in the
+            graph.
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.Graph.Name">
+            <summary>The unique identifier of the Graph.</summary>
+            <remarks>
+            	<para>
+                    The name is used to get the Graph from the <see cref="T:Analysis.ApiLib.GraphNames">GraphNames</see> collection.
+                </para>
+            	<para>Read only.</para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.Graph.Granularity">
+            <summary>The Granularity in seconds applied to all Series in the graph.</summary>
+            <remarks>The default Granularity is 16 seconds.</remarks>
+        </member>
+        <member name="P:Analysis.Api.Graph.Series">
+            <summary>The list of <see cref="P:Analysis.Api.Graph.Series">Series</see> object in the graph.</summary>
+        </member>
+        <member name="P:Analysis.Api.Graph.HasTimeAxis">
+            <summary>Checks whether the Graph has a time axis.</summary>
+            <remarks>
+            	<para>
+                    If true, the <see cref="T:Analysis.Api.SeriesPoint">SeriesPoint</see> objects of the graph
+                    have <see cref="P:Analysis.Api.SeriesPoint.RelativeTime">RelativeTime</see> values.
+                </para>
+            	<para>If false, the SeriesPoint.RelativeTime values are zero.</para>
+            </remarks>
+        </member>
+        <member name="T:Analysis.Api.CommonSeriesStatistics">
+            <summary>
+            This is the base class for graph and raw statistics.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.#ctor(Analysis.Api.SeriesPointDefinition)">
+            <summary>
+            Initializes a new instance of SeriesStatistics
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.CommonSeriesStatistics._pointDefinition">
+            <summary>
+            The associated SeriesPointDefinition object/
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.CommonSeriesStatistics._series">
+            <summary>
+            The associated Series object.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.IsFunctionAvailable(Analysis.ApiLib.StatisticsFunctionKind)">
+            <summary>
+            Checks whether the specified statistical function is available.
+            </summary>
+            <param name="aKind">The type of the Statistical Function</param>
+            <returns>True if Statistical Function is available</returns>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.BeforeCalcFunction(Analysis.Api.Notifications.NotificationStatisticsData)">
+            <summary>
+            Calls SeriesStatistics.CallBefore() method
+            </summary>
+            <param name="aData">Notification Data object</param>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.AfterCalcFunction(Analysis.Api.Notifications.NotificationStatisticsData)">
+            <summary>
+            Calls SeriesStatistics.CallAfter() method
+            </summary>
+            <param name="aData">Notification Data object</param>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.CreateNotificationData(Analysis.ApiLib.StatisticsFunctionKind)">
+            <summary>
+            Creates Notification Data for associated Series and the specified statistical function.
+            </summary>
+            <param name="aStatKind">Statistical Function Type</param>
+            <returns>Notification Data for associated Series and given Statistical Function Type</returns>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.CalculateStatisticalFunction(Analysis.ApiLib.StatisticsFunctionKind)">
+            <summary>
+            Abstract.
+            If overridden in derived classes, calculates the statistical function.
+            </summary>
+            <param name="aFuncKind">Statistical Function Type</param>
+            <returns>Result of calculation</returns>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.GetStatisticsItem(Analysis.ApiLib.StatisticsFunctionKind)">
+            <summary>
+            Returns the specified statistics item value.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.CalcSum">
+            <summary>
+            Returns the sum of all the Series Points` values.
+            </summary>
+            <returns>Sum of all Series Points` values</returns>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.CalcCount">
+            <summary>
+            Returns the number of Points in the Series.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.CalcMin">
+            <summary>
+            Returns the lowest Series Point value.
+            </summary>
+            <returns>Minimal Series Point value</returns>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.CalcMax">
+            <summary>
+            Returns the highest Series Point value.
+            </summary>
+            <returns>Maximal Series Point value</returns>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.CalcAverage">
+            <summary>
+            Returns the average of the Series Points` values.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.CalcMedian">
+            <summary>
+            Returns the median of all Series Points` values.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.CalcSTD">
+            <summary>
+            Returns the standard deviation of the Series Points` values.
+            </summary>
+            <returns>Standard deviation of all Series Points` values</returns>
+        </member>
+        <member name="M:Analysis.Api.CommonSeriesStatistics.CalcSTDInList(System.Collections.Generic.List{System.Double},System.Double@)">
+            <summary>
+            Returns the standard deviation of the values in the list.
+            </summary>
+            <param name="aValues">List of Double values</param>
+            <param name="lValue">Standard deviation value</param>
+            <returns>True if aValues count is greater than 0</returns>
+        </member>
+        <member name="P:Analysis.Api.CommonSeriesStatistics.Minimum">
+            <summary>
+            The lowest value in the series.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.CommonSeriesStatistics.Maximum">
+            <summary>
+            The largest value in the series.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.CommonSeriesStatistics.Average">
+            <summary>
+            The mean value of the measurements in the series.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.CommonSeriesStatistics.StdDeviation">
+            <summary>
+            The standard deviation of the values in the series.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.CorrelatedGraph.CheckXGraph">
+            <summary>
+            Checks whether _corrGraphX does not have exactly 1 series.
+            This case is unacceptable and exceptional
+            </summary>
+            <exception cref="T:Analysis.ApiLib.ApiException">_corrGraphX does not have exactly 1 series</exception>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.IBaseDictionary">
+            <summary>
+            This interface must be implemented by any BaseDictionaryItem or similar object.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.IBaseDictionary.LoadValues">
+            <summary>
+            Loads all items into this dictionary unconditionally.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.IBaseDictionary.LoadValuesIfNeeded">
+            <summary>
+            Loads items any items not previously loaded into this dictionary.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.IBaseDictionary.Clear">
+            <summary>
+            Clears this dictionary.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.IBaseDictionary.Find(System.Int32)">
+            <summary>
+            Returns the index of the dictionary item specified by its ID.
+            </summary>
+            <param name="aID">ID of dictionary item to find</param>
+            <returns>-1 if the item is not found. Else the index.</returns>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.IBaseDictionary.Find(System.String)">
+            <summary>
+            Returns the index of the dictionary item specified by its name.
+            </summary>
+            <param name="aName">Name of dictionary item to find</param>
+            <returns>-1 if the item is not found. Else the index</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.IBaseDictionary.IsValuesLoaded">
+            <summary>
+            Checks whether all dictionary items are loaded.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.IBaseDictionary.Count">
+            <summary>
+            Returns the number of items in this dictionary.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.IBaseDictionary.Item(System.Int32)">
+            <summary>
+            Returns a dictionary item by its index.
+            </summary>
+            <param name="index">Index of the dictionary item to return</param>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SiebelServers">
+            <summary>
+            Siebel_Servers dictionary
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.BaseDictionary`1">
+            <summary>Ancestor for all dictionaries. A collection of objects of a certain type.</summary>
+            <keywords>BaseDictionary</keywords>
+            <typeparam name="T">All classes derived from BaseDictionaryItem</typeparam>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.BaseDictionary`1.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of BaseDictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.BaseDictionary`1._nameToIndexDictionary">
+            <summary>
+            Map from BaseDictionaryItem.Name of the item to its index in the dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.BaseDictionary`1._idToIndexDictionary">
+            <summary>
+            Map from the BaseDictionaryItem.ID to its index in the dictionary
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.BaseDictionary`1.Find(System.Int32)">
+            <summary>
+            Finds an item by its ID.
+            </summary>
+            <param name="aID">The ID of the item to find.</param>
+            <returns>The index of the item if found. Otherwise, -1.</returns>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.BaseDictionary`1.Find(System.String)">
+            <summary>
+            Finds an item by its name.
+            </summary>
+            <param name="aName">The name of the item to find.</param>
+            <returns>The index of the item if found. Otherwise, -1.</returns>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.BaseDictionary`1.CreatelDictionaryItem">
+            <summary>
+            This method must create the new instance of the item dictionary item
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.BaseDictionary`1.LoadValues">
+            <summary>
+            Loads the values from the database into this collection.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.BaseDictionary`1.LoadValuesIfNeeded">
+            <summary>
+            Loads the values from the database into this collection unless they are already loaded.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.BaseDictionary`1.Analysis#ApiSL#Export#IExportable#Export(Analysis.ApiSL.Export.IExportWriter,Analysis.ApiSL.IStatusNotifier)">
+            <summary>
+            Exports this Dictionary using given IExportWriter
+            </summary>
+            <param name="aWriter"></param>
+            <param name="aStatusNotifier">Status notifier for the operation</param>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.BaseDictionary`1.Analysis#ApiSL#Export#IExportable#GetMetadata">
+            <summary>
+            Builds Metadata info for exporting
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.BaseDictionary`1.Name">
+            <summary>The unique name of the dictionary.</summary>
+            <remarks>The name is not localized.</remarks>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.BaseDictionary`1.IsValuesLoaded">
+            <summary>
+            	Checks whether the dictionary values have been loaded from the
+                database.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SiebelServers.DIC_SIEBEL_SERVERS">
+            <summary>
+            The name of the database table that contains the SiebelServer records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SiebelServers.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of SiebelServers
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SiebelServers.CreatelDictionaryItem">
+            <summary>
+            Creates a new SiebelServer item.
+            </summary>
+            <returns>New SiebelServer item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.SiebelServers.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SiebelServer">
+            <summary>
+            Siebel_Servers item
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.BaseDictionaryItem">
+            <summary>
+                One item of a collection derived from a <see cref="T:Analysis.Api.Dictionaries.BaseDictionary`1">BaseDictionary</see>-derived collection.
+            </summary>
+            <remarks>All properties are read only.</remarks>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.BaseDictionaryItem.#ctor">
+            <summary>
+            Initializes a new instance of BaseDictionaryItem
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.BaseDictionaryItem._id">
+            <summary>
+            The ID of the dictionary item.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.BaseDictionaryItem._name">
+            <summary>
+            The name of the dictionary item.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.BaseDictionaryItem.ToString">
+            <summary>
+            Returns the string representation of the BaseDictionaryItem object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.BaseDictionaryItem.ID">
+            <summary>The ID of the dictionary item.</summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.BaseDictionaryItem.Name">
+            <summary>The name of the dictionary item.</summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SiebelServer.COLUMN_ID">
+            <summary>
+            The name of the column that contains the Siebel Server ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SiebelServer.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the Siebel Server Name.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SiebelServer.#ctor">
+            <summary>
+            Initializes a new instance of SiebelServer
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SiebelScripts">
+            <summary>
+            Siebel_Scripts dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SiebelScripts.DIC_SIEBEL_SCRIPTS">
+            <summary>
+            The name of the database table that contains the SiebelScript records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SiebelScripts.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of SiebelScripts
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SiebelScripts.CreatelDictionaryItem">
+            <summary>
+            Creates a new SiebelScript item.
+            </summary>
+            <returns>New SiebelScript item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.SiebelScripts.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SiebelScript">
+            <summary>
+            Siebel_Scripts item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SiebelScript.COLUMN_ID">
+            <summary>
+            The name of the column that contains the Siebel Script ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SiebelScript.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the Siebel Script Name.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SiebelScript.#ctor">
+            <summary>
+            Initializes a new instance of SiebelScript
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SarmAreas">
+            <summary>
+            SARM_Areas dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SarmAreas.DIC_SARM_AREAS">
+            <summary>
+            The name of the database table that contains the SarmArea records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SarmAreas.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of SarmAreas
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SarmAreas.CreatelDictionaryItem">
+            <summary>
+            Creates a new SarmArea item.
+            </summary>
+            <returns>New SarmArea item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.SarmAreas.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SarmArea">
+            <summary>
+            SARM_Areas item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SarmArea.COLUMN_ID">
+            <summary>
+            The name of the column that contains the SARM Area ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SarmArea.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the SARM Area Name.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SarmArea.COLUMN_DESCRIPTION">
+            <summary>
+            The name of the column that contains the SARM Area Description.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SarmArea.COLUMN_LAYER_NAME">
+            <summary>
+            The name of the column that contains the SARM Area Layer Name.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SarmArea.COLUMN_SUB_AREA_NAME">
+            <summary>
+            The name of the column that contains the SARM Subarea Name.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SarmArea.COLUMN_SUB_AREA_DESCRIPTION">
+            <summary>
+            The name of the column that contains the SARM Subarea Description.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SarmArea.#ctor">
+            <summary>
+            Initializes a new instance of SarmArea
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.SarmArea.AreaDescription">
+            <summary>
+            Area Desc
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.SarmArea.LayerName">
+            <summary>
+            Layer Name
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.SarmArea.SubAreaName">
+            <summary>
+            Sub Area Name
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.SarmArea.SubAreaDescription">
+            <summary>
+            Sub Area Desc
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SapTCodes">
+            <summary>
+            Sap_Tcodes dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapTCodes.DIC_SAP_TCODES">
+            <summary>
+            The name of the database table that contains the SapTCode records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapTCodes.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of SapTCodes
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapTCodes.CreatelDictionaryItem">
+            <summary>
+            Creates a new SapTCode item.
+            </summary>
+            <returns>New SapTCode item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.SapTCodes.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SapTCode">
+            <summary>
+            Sap_Tcodes item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapTCode.COLUMN_ID">
+            <summary>
+            The name of the column that contains the SAP T Code ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapTCode.COLUMN_T_CODE">
+            <summary>
+            The name of the column that contains the SAP T Code.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapTCode.#ctor">
+            <summary>
+            Initializes a new instance of SapTCode
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SapServers">
+            <summary>
+            Sap_server dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapServers.DIC_SAP_SERVERS">
+            <summary>
+            The name of the database table that contains the SapServer records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapServers.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of SapServers
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapServers.CreatelDictionaryItem">
+            <summary>
+            Creates a new SapServer item.
+            </summary>
+            <returns>New SapServer item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.SapServers.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SapServer">
+            <summary>
+            Sap_server item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapServer.COLUMN_ID">
+            <summary>
+            The name of the column that contains the SAP Server ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapServer.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the SAP Server Name.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapServer.#ctor">
+            <summary>
+            Initializes a new instance of SapServer
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SapDsNames">
+            <summary>
+            Sap_ds_names dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapDsNames.DIC_SAP_DS_NAMES">
+            <summary>
+            The name of the database table that contains the SapDsName records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapDsNames.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of SapDsNames
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapDsNames.CreatelDictionaryItem">
+            <summary>
+            Creates a new SapDsName item.
+            </summary>
+            <returns>New SapDsName item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.SapDsNames.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SapDsName">
+            <summary>
+            Sap_ds_names item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapDsName.COLUMN_ID">
+            <summary>
+            The name of the column that contains the SAP DS Name ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapDsName.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the SAP DS Name.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapDsName.#ctor">
+            <summary>
+            Initializes a new instance of SapDsName
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SapAccounts">
+            <summary>
+            Sap_accounts dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapAccounts.DIC_SAP_ACCOUNTS">
+            <summary>
+            The name of the database table that contains the SapAccount records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapAccounts.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of SapAccounts
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapAccounts.CreatelDictionaryItem">
+            <summary>
+            Creates a new SapAccount item.
+            </summary>
+            <returns>New SapAccount item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.SapAccounts.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.SapAccount">
+            <summary>
+            Sap_accounts item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapAccount.COLUMN_ID">
+            <summary>
+            The name of the column that contains the SAP Account ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.SapAccount.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the SAP Account Name.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.SapAccount.#ctor">
+            <summary>
+            Initializes a new instance of SapAccount
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.J2eeSqls">
+            <summary>
+            J2EE_SQLs dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeSqls.DIC_J2EE_SQLS">
+            <summary>
+            The name of the database table that contains the J2eeSql records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeSqls.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of J2eeSqls
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeSqls.CreatelDictionaryItem">
+            <summary>
+            Creates a new J2eeSql item.
+            </summary>
+            <returns>New J2eeSql item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.J2eeSqls.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.J2eeSql">
+            <summary>
+            J2EE_SQLs item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeSql.COLUMN_ID">
+            <summary>
+            The name of the column that contains the J2EE SQL query ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeSql.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the J2EE SQL query Name.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeSql.COLUMN_SQL_TEXT">
+            <summary>
+            The name of the column that contains the J2EE SQL query text.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeSql.#ctor">
+            <summary>
+            Initializes a new instance of J2eeSql
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.J2eeSql.SqlText">
+            <summary>
+            SQL Text
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.J2eeMethods">
+            <summary>
+            J2EE_Methods dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeMethods.DIC_J2EE_METHODS">
+            <summary>
+            The name of the database table that contains the J2eeMethod records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeMethods.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of J2eeMethods
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeMethods.CreatelDictionaryItem">
+            <summary>
+            Creates a new J2eeMethod item.
+            </summary>
+            <returns>New J2eeMethod item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.J2eeMethods.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.J2eeMethod">
+            <summary>
+            J2EE_Methods item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeMethod.COLUMN_ID">
+            <summary>
+            The name of the column that contains the J2EE Method ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeMethod.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the J2EE Method Name.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeMethod.COLUMN_CLASS_ID">
+            <summary>
+            The name of the column that contains the J2EE Class ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeMethod.COLUMN_LAYER_ID">
+            <summary>
+            The name of the column that contains the J2EE Layer ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeMethod.COLUMN_METHOD_NAME_ID">
+            <summary>
+            The name of the column that contains the J2EE Method Name ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeMethod.COLUMN_SQL_ID">
+            <summary>
+            The name of the column that contains the SQL Query ID.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeMethod.#ctor">
+            <summary>
+            Initializes a new instance of J2eeMethod
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.J2eeMethod.ClassID">
+            <summary>
+            Class ID
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.J2eeMethod.LayerID">
+            <summary>
+            Layer ID
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.J2eeMethod.MethodNameID">
+            <summary>
+            Method Name ID
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.J2eeMethod.SqlID">
+            <summary>
+            SQL ID
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.J2eeMethodNames">
+            <summary>
+            J2EE_MethodNames dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeMethodNames.DIC_J2EE_METHOD_NAMES">
+            <summary>
+            The name of the database table that contains the J2eeMethodName records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeMethodNames.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of J2eeMethodNames
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeMethodNames.CreatelDictionaryItem">
+            <summary>
+            Creates a new J2eeMethodName item.
+            </summary>
+            <returns>New J2eeMethodName item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.J2eeMethodNames.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.J2eeMethodName">
+            <summary>
+            J2EE_MethodNames item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeMethodName.COLUMN_ID">
+            <summary>
+            The name of the column that contains the J2EE Method Name ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeMethodName.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the J2EE Method Name.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeMethodName.#ctor">
+            <summary>
+            Initializes a new instance of J2eeMethodName
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.J2eeLayerNames">
+            <summary>
+            J2EE_LayerNames dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeLayerNames.DIC_J2EE_LAYER_NAMES">
+            <summary>
+            The name of the database table that contains the J2eeLayerName records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeLayerNames.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of J2eeLayerNames
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeLayerNames.CreatelDictionaryItem">
+            <summary>
+            Creates a new J2eeLayerName item.
+            </summary>
+            <returns>New J2eeLayerName item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.J2eeLayerNames.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.J2eeLayerName">
+            <summary>
+            J2EE_LayerNames item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeLayerName.COLUMN_ID">
+            <summary>
+            The name of the column that contains the J2EE Layer ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeLayerName.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the J2EE Layer Name.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeLayerName.#ctor">
+            <summary>
+            Initializes a new instance of J2eeLayerName
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.J2eeClassNames">
+            <summary>
+            J2EE_ClassNames
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeClassNames.DIC_J2EE_CLASS_NAMES">
+            <summary>
+            The name of the database table that contains the J2eeClassName records/
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeClassNames.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of J2eeClassNames
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeClassNames.CreatelDictionaryItem">
+            <summary>
+            Creates a new J2eeClassName item.
+            </summary>
+            <returns>New J2eeClassName items</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.J2eeClassNames.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.J2eeClassName">
+            <summary>
+            J2EE_ClassNames
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeClassName.COLUMN_ID">
+            <summary>
+            The name of the column that contains the J2EE Class ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.J2eeClassName.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the J2EE Class Name.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.J2eeClassName.#ctor">
+            <summary>
+            Initializes a new instance of J2eeClassName
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Export.CsvExporter">
+            <summary>
+            Implements export to the comma-separated value format.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Export.CsvExporter.EXT_CSV">
+            <summary>
+            Extension for Comma Separated Values files
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Export.CsvExporter.#ctor(Analysis.ApiSL.LrAnalysisInfo)">
+            <summary>
+            Initializes a new instance of CsvExporter.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Export.CsvExporter._exportSettings">
+            <summary>
+            Csv Export Settings
+            </summary>		
+        </member>
+        <member name="M:Analysis.Api.Export.CsvExporter.ExportGraph(Analysis.Api.Graph,System.String)">
+            <summary>
+            Exports all Series in specified graph
+            </summary>
+            <param name="aGraph">All series of this graph will be exported</param>
+            <param name="aOutputPath">The full pathname including the .csv extension of the output file</param>
+        </member>
+        <member name="M:Analysis.Api.Export.CsvExporter.ExportSeries(Analysis.Api.Series,System.String)">
+            <summary>
+            Exports single Series
+            </summary>
+            <param name="aSeries">Series to export</param>
+            <param name="aOutputPath">The full pathname including the .csv extension of the output file</param>
+        </member>
+        <member name="M:Analysis.Api.Export.CsvExporter.ExportDictionary(Analysis.Api.Dictionaries.IBaseDictionary,System.String)">
+            <summary>
+            Exports data from Dictionary object. All items of the dictionary will be exported
+            </summary>
+            <param name="aDictionary">source BaseDictionary-derived object</param>
+            <param name="aOutputPath">The full pathname including the .csv extension of the output file</param>
+        </member>
+        <member name="P:Analysis.Api.Export.CsvExporter.ExportSettings">
+            <summary>
+            Csv Export Settings
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Export.CsvExporter.Events">
+            <summary>
+            Export events.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.AppHost">
+            <summary>
+            The AppHost Dictionary item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.AppHost.COLUMN_ID">
+            <summary>
+            The name of the column that contains the Application Host ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.AppHost.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the Application Host Name.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.AppHost.COLUMN_LOCATION">
+            <summary>
+            The name of the column that contains the Application Host Location.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.AppHost.COLUMN_SERVER_INSTANCE">
+            <summary>
+            The name of the column that contains the Application Host Server Instance.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.AppHost.#ctor">
+            <summary>
+            Initializes a new instance of AppHost
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.AppHost.AppHostLocation">
+            <summary>
+            The App Host Location
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.AppHost.ServerInstance">
+            <summary>
+            Server Instance
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.AppHosts">
+            <summary>
+            The AppHosts Dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.AppHosts.DIC_APPHOSTS">
+            <summary>
+            The name of the database table that contains the Application Hosts records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.AppHosts.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of AppHosts
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.AppHosts.CreatelDictionaryItem">
+            <summary>
+            Creates a new AppHost item.
+            </summary>
+            <returns>the new AppHost item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.AppHosts.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.VuserStatuses">
+            <summary>
+            Collection of VuserStatus objects
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VuserStatuses.DIC_VUSER_STATUSES">
+            <summary>
+            The name of the database table that contains the VuserStatus records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VuserStatuses.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of VuserStatuses
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VuserStatuses.CreatelDictionaryItem">
+            <summary>
+            Creates a new VuserStatus item.
+            </summary>
+            <returns>New VuserStatus item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.VuserStatuses.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.VuserStatus">
+            <summary>
+            The VuserStatus item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VuserStatus.COLUMN_ID">
+            <summary>
+            The name of the column that contains the VUser Status ID
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VuserStatus.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the VUser Status Name
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VuserStatus.#ctor">
+            <summary>
+            Initializes a new instance of VuserStatus
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.VuserGroups">
+            <summary>
+            VuserGroups dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VuserGroups.DIC_VUSER_GROUPS">
+            <summary>
+            The name of the database table that contains the VuserGroup records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VuserGroups.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of VuserGroups
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VuserGroups.CreatelDictionaryItem">
+            <summary>
+            Creates a new VuserGroup item.
+            </summary>
+            <returns>New VuserGroup item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.VuserGroups.Name">
+            <summary>
+            The name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.VuserGroup">
+            <summary>
+            The VuserGroup item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VuserGroup.COLUMN_ID">
+            <summary>
+            The name of the column that contains the VUser Group ID
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VuserGroup.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the VUser Group Name
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VuserGroup.#ctor">
+            <summary>
+            Initializes a new instance of VuserGroup
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.ScriptActions">
+            <summary>
+            ScriptActions collection
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.ScriptActions.DIC_SCRIPT_ACTIONS">
+            <summary>
+            The name of the database table that contains the ScriptAction records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.ScriptActions.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of ScriptActions
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.ScriptActions.CreatelDictionaryItem">
+            <summary>
+            Creates a new ScriptAction item.
+            </summary>
+            <returns>New ScriptAction item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.ScriptActions.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.ScriptAction">
+            <summary>
+            ScriptActions item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.ScriptAction.COLUMN_ID">
+            <summary>
+            The name of the column that contains the Script Action ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.ScriptAction.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the Script Action Name.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.ScriptAction.#ctor">
+            <summary>
+            Initializes a new instance of ScriptAction
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.Scripts">
+            <summary>
+            Scripts dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.Scripts.DIC_SCRIPTS">
+            <summary>
+            The name of the database table that contains the Script records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.Scripts.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of Scripts
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.Scripts.CreatelDictionaryItem">
+            <summary>
+            Creates a new Script item.
+            </summary>
+            <returns>New Script item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.Scripts.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.Script">
+            <summary>
+            Script item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.Script.COLUMN_ID">
+            <summary>
+            The name of the column that contains the Script ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.Script.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the Script Name.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.Script.#ctor">
+            <summary>
+            Initializes a new instance of Script
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.IpAddresses">
+            <summary>
+            IpAddresses
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.IpAddresses.DIC_IP_ADRESSES">
+            <summary>
+            The name of the database table that contains the IpAddress records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.IpAddresses.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of IpAddresses
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.IpAddresses.CreatelDictionaryItem">
+            <summary>
+            Creates a new IpAddress item.
+            </summary>
+            <returns>New IpAddress item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.IpAddresses.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.IpAddress">
+            <summary>
+            IP_Address
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.IpAddress.COLUMN_ID">
+            <summary>
+            The name of the column that contains the IP Address ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.IpAddress.COLUMN_IP_ADDRESS">
+            <summary>
+            The name of the column that contains the IP Address in text format.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.IpAddress.#ctor">
+            <summary>
+            Initializes a new instance of IpAddress
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.Hosts">
+            <summary>
+            Hosts dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.Hosts.DIC_HOSTS">
+            <summary>
+            The name of the database table that contains the Host records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.Hosts.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of Hosts
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.Hosts.CreatelDictionaryItem">
+            <summary>
+            Creates a new Host item
+            </summary>
+            <returns>New Host item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.Hosts.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.Host">
+            <summary>
+            Host dictionary item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.Host.COLUMN_ID">
+            <summary>
+            The name of the column that contains the Host ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.Host.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the Host Name.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.Host.COLUMN_LOCATION">
+            <summary>
+            The name of the column that contains the Host Location.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.Host.COLUMN_EMULATED_LOCATION">
+            <summary>
+            The name of the column that contains the Emulated Host Location.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.Host.#ctor">
+            <summary>
+            Initializes a new instance of Host
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.Host.HostLocation">
+            <summary>
+            Host Location
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.Host.EmulatedHostLocation">
+            <summary>
+            Emulated host location.
+            Used for WAN enulation feature
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.ExtendElements">
+            <summary>
+            ExtendElements
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.ExtendElements.DIC_EXTEND_ELEMENTS">
+            <summary>
+            The name of the database table that contains the Extend Element records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.ExtendElements.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of ExtendElements
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.ExtendElements.CreatelDictionaryItem">
+            <summary>
+            Creates a new ExtendElement item.
+            </summary>
+            <returns>New ExtendElement item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.ExtendElements.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.ExtendElement">
+            <summary>
+            Extend_Elements
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.ExtendElement.COLUMN_ID">
+            <summary>
+             The name of the column that contains the Extend Element ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.ExtendElement.COLUMN_NAME">
+            <summary>
+             The name of the column that contains the Extend Element Name.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.ExtendElement.COLUMN_EXTEND_TEXT">
+            <summary>
+             The name of the column that contains the Extend Element text.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.ExtendElement.#ctor">
+            <summary>
+            Initializes a new instance of ExtendElement
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.ExtendElement.ExtendText">
+            <summary>
+            Extend Text
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.ErrorMessages">
+            <summary>
+            AppHosts
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.ErrorMessages.DIC_ERROR_MESSAGES">
+            <summary>
+            The name of the database table that contains the Error Message records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.ErrorMessages.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of ErrorMessages
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.ErrorMessages.CreatelDictionaryItem">
+            <summary>
+            Creates a new ErrorMessage item.
+            </summary>
+            <returns>New ErrorMessage item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.ErrorMessages.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.ErrorMessage">
+            <summary>
+            ErrorMessage
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.ErrorMessage.COLUMN_ID">
+            <summary>
+             The name of the column that contains the Error ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.ErrorMessage.COLUMN_ERROR_MESSAGE">
+            <summary>
+             The name of the column that contains the Error Message.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.ErrorMessage.#ctor">
+            <summary>
+            Initializes a new instance of ErrorMessage
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.Descriptions">
+            <summary>
+            The Descriptions dictionary
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.Descriptions.DIC_DESCRIPTIONS">
+            <summary>
+            The name of the database table that contains the Descriptions records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.Descriptions.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of Descriptions
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.Descriptions.CreatelDictionaryItem">
+            <summary>
+            Creates a new Description item.
+            </summary>
+            <returns>New Description item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.Descriptions.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.Description.COLUMN_DESCRIPTION_TEXT">
+            <summary>
+            The name of the column that contains the Description text.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.Description.COLUMN_ID">
+            <summary>
+            The name of the column that contains the Description ID.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.Description.#ctor">
+            <summary>
+            Initializes a new instance of Description
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.TransactionEndStatuses">
+            <summary>
+            Collection of TransactionEndStatus objects
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.TransactionEndStatuses.DIC_TRANSACTION_END_STATUSES">
+            <summary>
+            The name of the database table that contains the TransactionEndStatus records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.TransactionEndStatuses.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of TransactionEndStatuses
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.TransactionEndStatuses.CreatelDictionaryItem">
+            <summary>
+            Creates a new TransactionEndStatus item.
+            </summary>
+            <returns>New TransactionEndStatus item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.TransactionEndStatuses.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.VUserEndStatuses">
+            <summary>
+            Collection of VUserEndStatus objects
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VUserEndStatuses.DIC_VUSER_END_STATUSES">
+            <summary>
+            The name of the database table that contains the VUserEndStatus records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VUserEndStatuses.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of VUserEndStatuses
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VUserEndStatuses.CreatelDictionaryItem">
+            <summary>
+            Creates a new VUserEndStatus item.
+            </summary>
+            <returns>New VUserEndStatus item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.VUserEndStatuses.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.TransactionEndStatus">
+            <summary>
+            TransactionEndStatus item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.TransactionEndStatus.COLUMN_STATUS_ID">
+            <summary>
+            The name of the column that contains the Transaction End Status ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.TransactionEndStatus.COLUMN_END_STATUS">
+            <summary>
+            The name of the column that contains the Transaction End Status.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.TransactionEndStatus.#ctor">
+            <summary>
+            Initializes a new instance of TransactionEndStatus
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.VUserEndStatus">
+            <summary>
+            The VuserEndStatus item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VUserEndStatus.COLUMN_ID">
+            <summary>
+            The name of the column that contains the VUser End Status ID
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VUserEndStatus.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the VUser End Status Name
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VUserEndStatus.#ctor">
+            <summary>
+            Initializes a new instance of VUserEndStatus
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.VUser">
+            <summary>
+            VuserId item
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VUser.COLUMN_ID">
+            <summary>
+            The name of the column that contains the Vuser ID.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VUser.COLUMN_NAME">
+            <summary>
+            The name of the column that contains the Vuser Name.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VUser.#ctor">
+            <summary>
+            Initializes a new instance of VUser
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Dictionaries.VUsers">
+            <summary>
+            Collection of VUser objects
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Dictionaries.VUsers.DIC_VUSERS">
+            <summary>
+            The name of the database table that contains the VUser records.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VUsers.#ctor(Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of VUsers
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Dictionaries.VUsers.CreatelDictionaryItem">
+            <summary>
+            Creates a new VUser item.
+            </summary>
+            <returns>New VUser item</returns>
+        </member>
+        <member name="P:Analysis.Api.Dictionaries.VUsers.Name">
+            <summary>
+            Name of the dictionary.
+            This name is unique for all dictionaries.
+            This name doesn’t depend on localization
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Export.Exporters">
+            <summary>
+            References to exporters for different formats.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Export.Exporters.#ctor(Analysis.Api.LrAnalysis,Analysis.ApiSL.LrAnalysisInfo)">
+            <summary>
+            Initializes a new instance of Exporters
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Export.Exporters.CSV">
+            <summary>
+            Exporter for comma-separated values format.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Export.IExporter">
+            <summary>
+            Interface declares methods for exporting data
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Export.IExporter.ExportGraph(Analysis.Api.Graph,System.String)">
+            <summary>
+            Exports all Series in specified graph.
+            </summary>
+            <param name="aGraph">Graph. All series of this graph will be exported</param>
+            <param name="aOutputPath">Path to the directory to export the Graph to</param>
+        </member>
+        <member name="M:Analysis.Api.Export.IExporter.ExportSeries(Analysis.Api.Series,System.String)">
+            <summary>
+            Exports single Series.
+            </summary>
+            <param name="aSeries">Series to export</param>
+            <param name="aOutputPath">Path to the file to export the Series to</param>
+        </member>
+        <member name="M:Analysis.Api.Export.IExporter.ExportDictionary(Analysis.Api.Dictionaries.IBaseDictionary,System.String)">
+            <summary>
+            Exports the data of all items in the Dictionary object.
+            </summary>
+            <param name="aDictionary">source BaseDictionary-derived object</param>
+            <param name="aOutputPath">Full file path name of the output file</param>
+        </member>
+        <member name="T:Analysis.Api.GraphWithGraphInfo">
+            <summary>
+            Describes a single graph.
+            </summary>
+            <remarks>
+                A Graph is a collection of <see cref="T:Analysis.Api.Series">Series</see> objects. The number of
+                Series object and the particular Series users depends on the graph type, the
+                current <see cref="T:Analysis.ApiLib.Filter">Filter</see>, and the current <see cref="T:Analysis.ApiLib.GroupBy">GroupBy</see>.
+            </remarks>
+        </member>
+        <member name="M:Analysis.Api.GraphWithGraphInfo.#ctor(Analysis.Api.LrAnalysis,Analysis.ApiSL.GraphInfo)">
+            <summary>
+            Initializes a new instance of Graph.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.GraphWithGraphInfo.ToString">
+            <summary>Returns the string representation of Graph object.</summary>
+            <returns>String representation of Graph object</returns>
+        </member>
+        <member name="M:Analysis.Api.GraphWithGraphInfo.IsPercentileGraph">
+            <summary>Checks whether this is a percentile graph.</summary>
+        </member>
+        <member name="M:Analysis.Api.GraphWithGraphInfo.AddAdditionalFilterItems(Analysis.ApiSL.IniFiles.GraphDefinition.GraphDefinitionFiltersList)">
+            <summary>
+            In this procedure we add items into the AdditionalFilter. But only absent items
+            We mustn't duplicate items. So we must make a check. But in *.def file the names of the 
+            dimension can be as in DB or as in UI. So we make a conversion using names map.
+            </summary>
+            <param name="aFilterItems"></param>
+        </member>
+        <member name="T:Analysis.Api.GraphsList">
+            <summary>
+            The collection of graphs.
+            </summary>
+            <remarks>GraphsList is populated by the 
+            <see cref="T:Analysis.Api.Run">Run</see> object that owns the list.
+            </remarks>
+        </member>
+        <member name="T:Analysis.Api.ApiBrowserType">
+            <summary>
+            Defines the type of the browser for the HTML report.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.ApiBrowserType.IE">
+            <summary>
+            The Internet explorer browser
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.ApiBrowserType.Netscape">
+            <summary>
+            Non Internet explorer browser
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.HtmlGraphName">
+            <summary>
+            Stores and builds the Graph name based on Run
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.HtmlGraphName.#ctor(Analysis.Api.Run,System.String)">
+            <summary>
+            Initializes a new instance of HtmlGraphName
+            </summary>
+            <param name="aRun">Run</param>
+            <param name="aName">Name of the Graph</param>
+        </member>
+        <member name="M:Analysis.Api.HtmlGraphName.GetName(Analysis.Api.Run,System.String)">
+            <summary>
+            Builds the full Graph Name based on the specified Run
+            </summary>
+            <param name="aRun">The run for which the graph is built</param>
+            <param name="aName">The name of the graph</param>
+            <returns></returns>
+        </member>
+        <member name="P:Analysis.Api.HtmlGraphName.Run">
+            <summary>
+            The Run that contains the Graph
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.HtmlGraphName.Name">
+            <summary>
+            Name of the Graph
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.HtmlReportMaker">
+            <summary>
+            Helper class for creating HTML Reports
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.HtmlReportMaker.#ctor(Analysis.Api.Session,Analysis.ApiSL.SessionInfo)">
+            <summary>
+            Initializes a new instance of HtmlReportMaker
+            </summary>
+            <param name="aSession">Analysis Session</param>
+            <param name="aSessionInfo">Analysis SessionInfo object</param>
+        </member>
+        <member name="M:Analysis.Api.HtmlReportMaker.Finalize">
+            <summary>
+            Disposes the resources used by this instance of HtmlReportMaker
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.HtmlReportMaker.AddGraph(System.String,Analysis.Api.Run)">
+            <summary>
+            Includes specified graph into the report.
+            </summary>
+            <param name="aName">The name of the graph. This name must exists
+            in ApiGlobal.GetInstance().GraphNames collection. If it not xists there then
+            this function returns false.</param>
+            <param name="aRun">Specifies the name of the run for wich data should be taken</param>
+            <returns>true if graph was included. 
+            false if not. The graph can be included if it contains 
+            data and is not included before.</returns>
+        </member>
+        <member name="M:Analysis.Api.HtmlReportMaker.AddGraph(System.String)">
+            <summary>
+            Same as above but add graph for the first Run
+            </summary>
+            <param name="aName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.Api.HtmlReportMaker.ContainsGraph(System.String,Analysis.Api.Run)">
+            <summary>
+            Checks whether this HtmlReportMaker already contains 
+            a Graph of the specified Name and Run.
+            </summary>
+            <param name="aName">Name of the Graph to check</param>
+            <param name="aRun">Run of the Graph to check</param>
+            <returns>True if this HtmlReportMaker already contains Graph of given Name and Run, otherwise false</returns>
+        </member>
+        <member name="M:Analysis.Api.HtmlReportMaker.ContainsGraph(System.String)">
+            <summary>
+            Checks whether this HtmlReportMaker already contains a Graph of the specified name
+            in the first Run in the Analysis Session.
+            </summary>
+            <param name="aName">Name of the Graph to check</param>
+            <returns>true if this HtmlReportMaker already contains a Graph of the specified Name</returns>
+        </member>
+        <member name="M:Analysis.Api.HtmlReportMaker.RemoveGraph(System.String,Analysis.Api.Run)">
+            <summary>
+            Excludes the specified graph from the report.
+            </summary>
+            <param name="aName">The name of the graph to exclude</param>
+            <param name="aRun">Run containing the Graph</param>
+        </member>
+        <member name="M:Analysis.Api.HtmlReportMaker.RemoveGraph(System.String)">
+            <summary>
+            Excludes the specified graph from the report
+            </summary>
+            <param name="aName">The name of the graph to exclude</param>
+        </member>
+        <member name="M:Analysis.Api.HtmlReportMaker.CreateHtmlReport(System.String,Analysis.Api.ApiBrowserType)">
+            <summary>
+            Creates the HTML report
+            </summary>
+            <param name="aReportFileName">The file name where report must be stored</param>
+            <param name="aBrowserType">Specifies the type of the browser for which to generate the report.</param>
+            <returns>true if no errors occurs and false in other caseses. The information about error is placed in RunTimeErrors object</returns>
+        </member>
+        <member name="M:Analysis.Api.HtmlReportMaker.CreateDefaultHtmlReport(System.String,Analysis.Api.ApiBrowserType)">
+            <summary>
+            This method creates HTML report containing the graphs opened in the Analysis UI. It ignores the 
+            graphs specified in GraphsInReport property.
+            </summary>
+            <returns>true if no errors. On error, returns false  
+            and the error information is written to the RunTimeErrors object.</returns>
+            <remarks>
+                When a default report is created using this method, the <see cref="P:Analysis.Api.HtmlReportMaker.GraphsInReport">GraphsInReport</see> is empty. 
+                There may be graphs in the report in the UI,
+                but they cannot be accessed programmatically using this API set.
+            </remarks>
+            <param name="aReportFileName">The file name to store the report in</param>
+            <param name="aBrowserType">The type of the browser for which to generate the report.</param>
+        </member>
+        <member name="M:Analysis.Api.HtmlReportMaker.Dispose">
+            <summary>
+            Disposes the resources used by this instance of HtmlReportMaker.
+            Releases Analysis COM objects used for report creation
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.HtmlReportMaker.GraphsInReport">
+            <summary>
+            The list of graphs names which must be included in report.
+            </summary>
+            <remarks>
+                This collection is empty when the report was created with the <see cref="M:Analysis.Api.HtmlReportMaker.CreateDefaultHtmlReport(System.String,Analysis.Api.ApiBrowserType)">CreateDefaultHtmlReport Method</see>.
+            </remarks>
+        </member>
+        <member name="T:Analysis.Api.Log">
+            <summary>
+            The logging system.
+            
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Log.#ctor(Analysis.ApiSL.LogInfo)">
+            <summary>
+            Initializes a new instance of Log
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Log.WriteError(System.String,System.Int32)">
+            <summary>Writes an error message to the log file.</summary>
+            <returns>true on success</returns>
+            <seealso cref="T:Analysis.ApiLib.Severity">Severity Enumeration</seealso>
+            <param name="aMessage">The message</param>
+            <param name="aSubType">
+            	<para>
+                    The code associated with the log record. The Analysis API uses values from
+                    <see cref="T:Analysis.ApiLib.ErrorCodes">ErrorCodes</see>.
+                </para>
+            	<para>Your application-specific error codes must be greater than 1000.</para>
+            </param>
+        </member>
+        <member name="M:Analysis.Api.Log.WriteWarning(System.String,System.Int32)">
+            <summary>Writes a warning message to the log file.</summary>
+            <returns>true on success</returns>
+            <seealso cref="T:Analysis.ApiLib.Severity">Severity Enumeration</seealso>
+            <param name="aMessage">The message</param>
+            <param name="aSubType">
+            	<para>
+                    The code associated with the log record. The Analysis API uses values from
+                    <see cref="T:Analysis.ApiLib.ErrorCodes">ErrorCodes</see>.
+                </para>
+            	<para>Your application-specific error codes must be greater than 1000.</para>
+            </param>
+        </member>
+        <member name="M:Analysis.Api.Log.WriteInfo(System.String,System.Int32)">
+            <summary>Writes an informational message to the log file.</summary>
+            <returns>true on success</returns>
+            <seealso cref="T:Analysis.ApiLib.Severity">Severity Enumeration</seealso>
+            <param name="aMessage">The message</param>
+            <param name="aSubType">
+            	<para>
+                    The code associated with the log record. The Analysis API uses values from
+                    <see cref="T:Analysis.ApiLib.ErrorCodes">ErrorCodes</see>.
+                </para>
+            	<para>Your application-specific error codes must be greater than 1000.</para>
+            </param>
+        </member>
+        <member name="P:Analysis.Api.Log.FileName">
+            <summary>The absolute file path name of the log file.</summary>
+            <remarks>Read only.</remarks>
+        </member>
+        <member name="P:Analysis.Api.Log.LogLevel">
+            <summary>
+            The level for filtering log messages by severity.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationArgsExporter">
+            <summary>
+            EventArgs-derived class. Stores various Exporters` data
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Notifications.NotificationArgsExporter.#ctor(System.Object)">
+            <summary>
+            Initialize new instance of the NotificationArgsExporter
+            </summary>
+            <param name="aExportedItem"></param>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationArgsExporter.ExportedItem">
+            <summary>
+            The item to be exported.
+            It can be Graph, Series or one of the descendants of the BaseDictionary
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationArgsGranularity">
+            <summary>
+            This class is used in Session.Events.GraphGranularityChanged. The sender is Graph object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationArgsGranularity.OldGranularity">
+            <summary>
+            The graph granularity value before change
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationArgsGranularity.NewGranularity">
+            <summary>
+            The graph granularity value after change
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationArgsSessionCreate">
+            <summary>
+            Objects of this class are passed to the Session.Events.SessionCreate.Before 
+            Session.Events.SessionCreate.After handlers as EventArgs parameter
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Notifications.NotificationArgsSessionCreate.#ctor(System.String,System.String)">
+            <summary>
+            Initializes the new instance
+            </summary>
+            <param name="aSessionName"></param>
+            <param name="aResultName"></param>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationArgsSessionCreate.SessionName">
+            <summary>
+            The name of the session (*.lra file) to be created
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationArgsSessionCreate.ResultName">
+            <summary>
+            The name of the result file (*.lrrr) to be imported into the session
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationArgsName">
+            <summary>
+            Objects of this class are passed to the next handlers as EventArgs parameter
+            Session.Events.SessionApplyTemplate.Before/After
+            Session.Events.SessionOpen.Before/After
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationArgsName.Name">
+            <summary>
+            The name of the template.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationCSVExporterEvents">
+            <summary>
+            Contains all possible events for CSV exporting
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationCSVExporterEvents.Series">
+            <summary>
+            These events are fired each time a Series is exported. 
+            The sender object is the Series object that is being exported.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationCSVExporterEvents.Graph">
+            <summary>
+            Those events are fired each time a Graph is exported. 
+            The sender object is Graph object that is being exported.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationCSVExporterEvents.Dictionary">
+            <summary>
+            Those events are fired each time a Dictionary is exported. 
+            The sender object is Dictionary object that is being exported.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationEventsProvider`1">
+            <summary>
+            Base class for event providers, that support notification about current status/progress
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationPairEvent">
+            <summary>
+            This is the most common event pair. Used for almost all long operations in Analysis API
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationPairEventBase`1">
+            <summary>
+            This class is the base class for all notifications in Analysis API.
+            It has two main events: Before and After
+            </summary>
+            <typeparam name="T">One of the descendats of the EventArgs</typeparam>
+        </member>
+        <member name="M:Analysis.Api.Notifications.NotificationPairEventBase`1.CallBefore(System.Object,`0)">
+            <summary>
+            Safely calls the Before event.
+            </summary>
+            <param name="aSender"></param>
+            <param name="aArgs"></param>
+        </member>
+        <member name="M:Analysis.Api.Notifications.NotificationPairEventBase`1.CallAfter(System.Object,`0)">
+            <summary>
+            Safely calls the After event.
+            </summary>
+            <param name="aSender"></param>
+            <param name="aArgs"></param>
+        </member>
+        <member name="E:Analysis.Api.Notifications.NotificationPairEventBase`1.Before">
+            <summary>
+            Fired before some long operation
+            </summary>
+        </member>
+        <member name="E:Analysis.Api.Notifications.NotificationPairEventBase`1.After">
+            <summary>
+            Fired after some long operation
+            </summary>
+        </member>
+        <member name="E:Analysis.Api.Notifications.NotificationEventsProvider`1.NotifyStatusUpdate">
+            <summary>
+            Fired each time when long operation wants to update external application about some changes in progress,
+            i.e. when one of the NotificationProgressData properties are changed. 
+            See more details in NotificationProgressData description.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationHTMLReportPairEvent">
+            <summary>
+            Stores HTML Report events data.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationProgressData">
+            <summary>
+            Notification Data for Progresses.
+            Contains current progress value and maximum one.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationStatusData">
+            <summary>
+            Base class for all Notification Data in Analysis API.
+            Contains current progress value
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Notifications.NotificationStatusData.#ctor">
+            <summary>
+            Initializes a new instance of NotificationSatusData
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Notifications.NotificationStatusData._progress">
+            <summary>
+            Current progress value.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Notifications.NotificationStatusData._comment">
+            <summary>
+            The comment about the current operation.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Notifications.NotificationStatusData._commentCode">
+            <summary>
+            The comment code for the current operation.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Notifications.NotificationStatusData._task">
+            <summary>
+            The name of the current task.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Notifications.NotificationStatusData._canContinue">
+            <summary>
+            Indicates whether the process can continue executing.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Notifications.NotificationStatusData.Reset">
+            <summary>
+            Resets all properties to their initial values.
+            The CanContinue property is set to true.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Notifications.NotificationStatusData.SetComment(System.Int32,System.String)">
+            <summary>
+            Set comment to the progress/status data
+            </summary>
+            <param name="aCommentCode"></param>
+            <param name="aComment"></param>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationStatusData.Progress">
+            <summary>
+            The current progress value. Either -1 or a value between 0-100.
+            Warning: If the value is -1, do not use the property.
+            -1 is used for to enable cancelation but is not a valid value.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationStatusData.Comment">
+            <summary>
+            The comment about the current operation.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationStatusData.CommentCode">
+            <summary>
+            The comment code for current the operation. 
+            </summary>
+            <remarks>The code can be used for 
+            internationalization or programmatic handling of the comments.
+            </remarks>		
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationStatusData.Task">
+            <summary>
+            The name of the the current task.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationStatusData.CanContinue">
+            <summary>
+            Indicates whether the process can continue executing.
+            </summary>
+            <remarks>
+            A programm can set this value to false to halt the action.
+            Sometimes the action cannot be stopped immediately. Therefore,
+            other notifications can be received from the action after setting 
+            CanContinue to false. For example, the progress can continue to
+            increment until the action is actually halted.
+            </remarks>
+        </member>
+        <member name="M:Analysis.Api.Notifications.NotificationProgressData.#ctor">
+            <summary>
+            Initialize the new instance of the object
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Notifications.NotificationProgressData.Reset">
+            <summary>
+            Resets all properties to their initial values. CanContinue property is set to true.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationProgressData.MaxProgress">
+            <summary>
+            The maximum available progress value
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationProgressEvent">
+            <summary>
+            This class incapsulates the progress event
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationSessionEvents">
+            <summary>
+            Stores Events that can be subjects of Notifications sent by the Session object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationSessionEvents.SessionOpen">
+            <summary>
+            Fired when the method Session.Open is called. The sender is Session object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationSessionEvents.SessionClose">
+            <summary>
+            Fired when the method Session.Close is called. The sender is Session object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationSessionEvents.GraphGetSeries">
+            <summary>
+            Fired when the method external application first 
+            time accesses to the Graph.Series property. The sender is Graph object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationSessionEvents.GraphGranularityChanged">
+            <summary>
+            Fired when property Graph.Granularity is changed. The sender is Graph object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationSessionEvents.GraphApplyFilterAndGroupBy">
+            <summary>
+            Fired when method Graph.ApplyFilterAndGroupBy is called. The sender is Graph object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationSessionEvents.SeriesLoadPoints">
+            <summary>
+            Fired when external application first time accesses to the Series.Points 
+            property. The sender is Series object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationSessionEvents.SeriesStatistics">
+            <summary>
+            Fired when some statistic function is calculated. Calculated value is cached 
+            by SeriesStatistics object. So this event fired only first time for each series and each stat. function.
+            The sender is StatisticsCalculator. The StatisticsNotificationData contains 
+            information about the stat function.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationSessionEvents.SessionCreate">
+            <summary>
+            Those events are fired in Session.Create method. The sender is Session object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationSessionEvents.SessionApplyTemplate">
+            <summary>
+            Those events are fired in Session.ApplyTemplate method. The sender is Session object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationSessionEvents.RunLoadGraphList">
+            <summary>
+            Those events are fired when external application first time accesses to the Run.Graphs property.
+            The sender is Run object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationSessionEvents.CreateHtmlReport">
+            <summary>
+            Those events are called in HtmlReportMaker.CreateHtmlReport
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationsHTMLReportData">
+            <summary>
+            This class contains information about an HTML report.
+            <tt>NotificationsHTMLReportData</tt> objects are passed as parameters to
+            <tt>CreateHtmlReport event handlers.</tt>
+            </summary>
+            <remarks>
+                The objects are passed to events <tt>Session.Events.CreateHtmlReport.Before</tt>
+                and <tt>Session.Events.CreateHtmlReport.After</tt>.<br/>
+                These events are triggered by methods <see cref="M:Analysis.Api.HtmlReportMaker.CreateHtmlReport(System.String,Analysis.Api.ApiBrowserType)">HtmlReportMaker.CreateHtmlReport</see>
+                and <see cref="M:Analysis.Api.HtmlReportMaker.CreateDefaultHtmlReport(System.String,Analysis.Api.ApiBrowserType)">HtmlReportMaker.CreateDefaultHtmlReport</see>.
+                <para> </para>
+                <para>See also:</para>
+            		<see cref="P:Analysis.Api.Session.Events">Session.Events
+                    (Analysis.Api.Session)</see>
+            	<br/>
+            		<see cref="T:Analysis.Api.Notifications.NotificationSessionEvents">NotificationSessionEvents Class</see>
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationsHTMLReportData.Session">
+            <summary>
+            The session for which the HTML report has been generated.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationsHTMLReportData.ReportsMaker">
+            <summary>
+            The HTMLReportMaker object that generates the report. <br/>
+            You can get a list of the graphs included in the report from this object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationsHTMLReportData.ReportFileName">
+            <summary>The name of the generated report file.</summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationsHTMLReportData.BrowserType">
+            <summary>The type of browser for which report is generated.</summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationStatisticsData">
+            <summary>
+            This class extends the EventArgs for the SeriesStatistics. 
+            The sender always is SeriesStatistics.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Notifications.NotificationStatisticsData.#ctor(Analysis.Api.Series,Analysis.ApiLib.StatisticsFunctionKind)">
+            <summary>
+            Initializes the new instance of the StatisticsNotificationData
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationStatisticsData.Series">
+            <summary>
+            The Series object which is owns the SeriesStatistics
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Notifications.NotificationStatisticsData.StatFunction">
+            <summary>
+            The kind of the statistical function which is calculated
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationStatisticsPairEvent">
+            <summary>
+            Stores Statistics events data.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Notifications.NotificationStatusEvent">
+            <summary>
+            Stores event for status notifications
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Run">
+            <summary>The load test measurements for a single run.</summary>
+            <remarks>
+                Run is a collection of <see cref="T:Analysis.Api.Graph">Graph</see> objects. Each Graph contains
+                one or more <see cref="T:Analysis.Api.Series">Series</see> of measurements. When the <see cref="T:Analysis.Api.Session">Session</see> is opened, the list of available Graphs populated
+                automatically.
+            </remarks>
+        </member>
+        <member name="M:Analysis.Api.Run.#ctor(Analysis.Api.LrAnalysis,Analysis.ApiSL.RunInfo)">
+            <summary>
+            Initializes a new instance of Run
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Run.ToString">
+            <summary>
+            Returns the string representation of the Run object.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Run.OpenGraph(System.String)">
+            <summary>
+            Creates new instance of the graph and opens it.
+            </summary>
+            <param name="aGraphName">The name of the graph to open.</param>
+            <returns>Opened graph. If graph contains no data then returns null</returns>
+        </member>
+        <member name="P:Analysis.Api.Run.Scenario">
+            <summary>The name of the scenario.</summary>
+        </member>
+        <member name="P:Analysis.Api.Run.ID">
+            <summary>The Run ID.</summary>
+        </member>
+        <member name="P:Analysis.Api.Run.Name">
+             <summary>
+             The name of the test result file (*.lrr) that was imported into the Analysis session.
+             </summary>
+             <remarks>
+             Only the file name is returned, without the lrr extension and without the path. 
+             This name must is unique in one session.
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.Run.TestName">
+            <summary>
+            The name of the run in the Performance Center. If run wasn't loaded from the PC then retuns the regular name of the run.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Run.TimeZone">
+            <summary>
+            The difference between UTC and the local time in seconds.
+            </summary>
+            <remarks>To convert the local time <tt>LT</tt> to UTC time <tt>UT</tt>,
+            use the formula: <tt>UT = LT + TimeZone</tt>.
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.Run.StartTime">
+            <summary>
+            The local time the test began in seconds since 1/1/1970 00:00.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Run.EndTime">
+            <summary>
+            The local time the test ended in seconds since 1/1/1970 00:00.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Run.LrLocalStartTime">
+            <summary>
+            The test start time adjusted for local time zone.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Run.LrLocalEndTime">
+            <summary>
+            The test end time adjusted for local time zone.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Run.Graphs">
+            <summary>
+            The collection of graphs for this run.
+            </summary>
+            <remarks>Only graphs with data are available to a run.</remarks>
+            <seealso cref="T:Analysis.Api.GraphsList">GraphsList Class</seealso>
+        </member>
+        <member name="T:Analysis.Api.Runs">
+            <summary>The collection of runs available in the session.</summary>
+            <remarks>Each run represents the results of one load test.
+            </remarks>
+            
+        </member>
+        <member name="M:Analysis.Api.Runs.#ctor(Analysis.Api.LrAnalysis)">
+            <summary>
+            Initializes a new instance of Runs.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Series">
+            <summary>
+            Describes a single series of the measurement.
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Series.COLUMN_PERCENTILE">
+            <summary>
+            The name of the column that contains the Percentile data
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.Series.COLUMN_RELATIVE_TIME">
+            <summary>
+            The name of the column that contains the Relative Time
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Series.#ctor(Analysis.Api.LrAnalysis,Analysis.ApiSL.SeriesInfo)">
+            <summary>
+            Initializs a new instance of Series.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Series.ToString">
+            <summary>Returns the string representation of the Series object.</summary>
+        </member>
+        <member name="M:Analysis.Api.Series.CanUsePointsIterator">
+            <summary>
+            Checks if iterator is available for the current series.
+            </summary>
+            <returns>true if you can use Iterator and false in other cases</returns>
+        </member>
+        <member name="M:Analysis.Api.Series.GetPointsIterator">
+            <summary>
+                Returns a SeriesPointIterator to iterate through the <see cref="T:Analysis.Api.SeriesPoint">SeriesPoint</see> objects in the database.
+            </summary>
+            <remarks>This iterator cannot be used with percentile graphs.</remarks>
+            <returns>SeriesPointIterator</returns>
+        </member>
+        <member name="P:Analysis.Api.Series.Name">
+            <summary>
+            The name of a series is unique in the scope of a Graph.
+            </summary>
+            <remarks>
+            The name is built from the current Filter and GroupBy values.
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.Series.PointsDefinition">
+            <summary>
+                Retruns the list of <see cref="T:Analysis.Api.SeriesPointDefinition">SeriesPointDefinition
+                Class</see> items.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Series.GraphStatistics">
+            <summary>
+            Returns the
+            <see cref="T:Analysis.Api.SeriesGraphStatistics">Graph Statistics</see>
+            object for this Series
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Series.RawStatistics">
+            <summary>
+            Returns the 
+            <see cref="T:Analysis.Api.SeriesRawStatistics">Raw Statistics</see>
+            object for this Series
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Series.Attributes">
+            <summary>
+                Values related to the <see cref="P:Analysis.Api.Graph.GroupBy">GroupBy</see> clause of the parent
+                Graph object.
+            </summary>
+            <remarks>
+            	<para>Each active GroupBy item has a corresponding item in this collection with the
+                same name.</para>
+            	<para>An item is active if Graph.GroupBy[i].Active is true.</para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.Series.Points">
+            <summary>The collection of points for the series.</summary>
+        </member>
+        <member name="T:Analysis.Api.SeriesGraphStatistics">
+            <summary>
+            Calculates the graph statistical information of single series.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.SeriesGraphStatistics.CalculateStatisticalFunction(Analysis.ApiLib.StatisticsFunctionKind)">
+            <summary>
+            Calculates the specified statistical function.
+            </summary>
+            <param name="aFuncKind">The type of statistical function</param>
+            <returns>Result of the statistical calculation</returns>
+        </member>
+        <member name="P:Analysis.Api.SeriesGraphStatistics.Median">
+            <summary>
+            The median value in the series.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.SeriesList">
+            <summary>
+                The collection of <see cref="T:Analysis.Api.Series">Series</see> objects that belong to a
+                <see cref="T:Analysis.Api.Graph">Graph</see>.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.SeriesList.FindByAttributes(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Object},System.Int32)">
+            <summary>
+            Finds the first occurence of the series with specified list of attributes values.
+            </summary>
+            <param name="aAttrNames">The list of attributes names to search.</param>
+            <param name="aAttrValues">The list of values of the attributes.</param>
+            <param name="aStartIndex">The start index from which to start to search</param>
+            <returns>The index of the founded series in the list. If such series does not exists then returns -1</returns>
+        </member>
+        <member name="M:Analysis.Api.SeriesList.FindByAttributes(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Object})">
+            <summary>
+            Finds the first occurence of the series with specified list of attributes values.
+            </summary>
+            <param name="aAttrNames">The list of attributes names to search.</param>
+            <param name="aAttrValues">The list of values of the attributes.</param>
+            <returns>The index of the founded series in the list. If such series does not exists then returns -1</returns>
+        </member>
+        <member name="M:Analysis.Api.SeriesList.FindByAttribute(System.String,System.Object)">
+            <summary>
+            Finds the first occurence of the series with specified attribute value.
+            </summary>
+            <param name="attributeName">The name of attribute to search</param>
+            <param name="attributeValue">The value of the attribute</param>
+            <returns>The index of the founded series in the list. If such series does not exists then returns -1</returns>
+        </member>
+        <member name="M:Analysis.Api.SeriesList.FindByAttribute(System.String,System.Object,System.Int32)">
+            <summary>
+            Finds the first occurence of the series with specified attribute value.
+            </summary>
+            <param name="aAttributeName">The name of attribute to search</param>
+            <param name="aAttributeValue">The value of the attribute</param>
+            <param name="aStartIndex">The start index from which to start to search</param>
+            <returns>The index of the founded series in the list. If such series does not exists then returns -1</returns>
+        </member>
+        <member name="T:Analysis.Api.SeriesPoint">
+             <summary>
+             Measurements at a specific time.
+             </summary>
+             <remarks>
+             A series point can have more than one value. 
+             The list of all values is accessible through the Values property.
+            </remarks>
+        </member>
+        <member name="M:Analysis.Api.SeriesPoint.#ctor(Analysis.Api.Series)">
+            <summary>
+            Initialize a new instance of SeriesPoint.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.SeriesPoint.Assign(Analysis.Api.SeriesPoint)">
+            <summary>
+            Copy the values and time from the point argument to this point.
+            </summary>
+            <param name="aPoint">A reference to the point from which to copy the data.</param>
+        </member>
+        <member name="M:Analysis.Api.SeriesPoint.Clear">
+            <summary>Clear this point's data.</summary>
+        </member>
+        <member name="M:Analysis.Api.SeriesPoint.ClearValues">
+            <summary>Clear this points measurement values, but not the RelativeTime.</summary>
+        </member>
+        <member name="M:Analysis.Api.SeriesPoint.ToString">
+            <summary>
+            Returns the string representation of this SeriesPoint object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesPoint.Owner">
+            <summary>The <see cref="T:Analysis.Api.Series">Series</see> that owns this point.</summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesPoint.RelativeTime">
+            <summary>Time of the measurement from the beginning of the scenario.
+            For percentile graphs, the value is percent of the run. For other graphs,
+            the value is in seconds.
+            </summary>
+            <remarks>
+            	<para>If there is no time information in the graph the value is 0.
+            	For example,the <tt>VUserSummary</tt> and <tt>TransactionSummary</tt> graphs
+                have no time.</para>
+            	<para>
+                    See the <see cref="P:Analysis.Api.Graph.HasTimeAxis">HasTimeAxis Property.</see>
+            	</para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.SeriesPoint.Value">
+            <summary>
+            The measurement value.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesPoint.Values">
+            <summary>
+            The list of values for the current point.
+            </summary>
+            <remarks>
+             The first value from this list is copied to the <tt>this.Value</tt> property.
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.SeriesPoint.Interval">
+            <summary>
+            This property are very closely connected with Granularity. It contains the period of time (in seconds)
+            from which values was grouped in the single point. Almost always this property equals to Graph.Granularity
+            value except the end point - it can be less than granularity value.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.SeriesPointDefinition">
+            <summary>
+                This class represents the definition of one column in a <see cref="P:Analysis.Api.SeriesPoint.Values">SeriesPoint.Values</see> collection.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesPointDefinition.Name">
+            <summary>The name of the values.</summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesPointDefinition.Owner">
+            <summary>The owner <see cref="T:Analysis.Api.Series">Series</see> of this object.</summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesPointDefinition.RawStatistics">
+            <summary>The raw statistics for one 'Y' value.</summary>
+            <value><see cref="P:Analysis.Api.Series.PointsDefinition">Series.PointsDefinition[0]</see>.RawStatistics.</value>
+        </member>
+        <member name="P:Analysis.Api.SeriesPointDefinition.GraphStatistics">
+            <summary>The Graph statistics for one 'Y' value.</summary>
+            <value>
+            	<see cref="P:Analysis.Api.Series.PointsDefinition">Series.PointsDefinition[0]</see>.GraphStatistics.
+            </value>
+        </member>
+        <member name="T:Analysis.Api.SeriesPointDefinitionList">
+            <summary>
+            Contains the definitions for all SeriesPoint values 
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.SeriesPointDefinitionList.CheckForAggregateSumFunctionKind">
+            <summary>
+            Checks whether at least one SeriesPointDefinition
+            in this list has ResultSetAggregateFunctionKind.AggSum
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesPointDefinitionList.Owner">
+            <summary>
+            The owner of this SeriesPointDefinitionList
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesPointDefinitionList.IsAggregateSumKind">
+            <summary>
+            Checks whether at least one SeriesPointDefinition
+            in this list has ResultSetAggregateFunctionKind.AggSum
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.SeriesPointIterator">
+            <summary>
+            SeriesPointIterator is used to iterate through SeriesPoint objects in database.
+            </summary>
+            <remarks>
+            	<para>
+                    The iterator uses less memory than a <see cref="T:Analysis.Api.SeriesPointList">SeriesPointList</see> because it holds only one current
+                    point.
+                </para>
+            	<para>This iterator cannot be used with percentile graphs.</para>
+            </remarks>
+        </member>
+        <member name="M:Analysis.Api.SeriesPointIterator.#ctor(Analysis.Api.Series,Analysis.ApiSL.ISeriesInfoCursor)">
+            <summary>
+            Initializes a new instance of SeriesPointIterator
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.SeriesPointIterator.Finalize">
+            <summary>
+            The destructor for SeriesPointIterator class
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.SeriesPointIterator._noDataInDataReader">
+            <summary>
+            true - means that there is no data in data reader during reading of data tail
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.SeriesPointIterator.ReadStoredPoint">
+            <summary>
+            Assigns the values of Stored Point to the Current Point
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.Api.SeriesPointIterator.EnsureMinRangePointIsAdded">
+            <summary>
+            Checks whether there is a need to add fake min range point.
+            When we have AggSum select strings and the time filter starts not from the begining then we must add 
+            the first point with the value at the begining of the time range.
+            Adds it if needed.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Analysis.Api.SeriesPointIterator.MoveNext">
+            <summary>Advances Iterator to the next SeriesPoint .</summary>
+            <returns>true if there exists a next available SeriesPoint</returns>
+        </member>
+        <member name="M:Analysis.Api.SeriesPointIterator.Reset">
+            <summary>
+            Resets the DataReader to null, representing the position before the first series
+            point.
+            </summary>
+            <remarks>
+            After calling Reset, call MoveNext at least once before using the Current
+            property.
+            </remarks>
+        </member>
+        <member name="M:Analysis.Api.SeriesPointIterator.Close">
+            <summary>Closes the current iterator.</summary>
+            <remarks>This method must be called when you finish work with this iterator.</remarks>
+        </member>
+        <member name="M:Analysis.Api.SeriesPointIterator.System#IDisposable#Dispose">
+            <summary>
+            Implementation of IDisposable interface. This method calls Close() method of SeriesPointIterator
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesPointIterator.Current">
+            <summary>Returns current SeriesPoint.</summary>
+            <remarks>
+            	<para>This is a single object. The values are populated each time MoveNext is
+                called.</para>
+            	<para>After the iterator’s creation and before first call to MoveNext, this
+                property is null. Call MoveNext method at least one time before using this
+                property.</para>
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.SeriesPointIterator.System#Collections#IEnumerator#Current">
+            <summary>
+            Returns current SeriesPoint
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.SeriesPointList">
+            <summary>
+            The collection of points for a series.
+            </summary>
+            <remarks>The collection is populated by the parent <see cref="T:Analysis.Api.Series">Series</see> object.</remarks>
+        </member>
+        <member name="M:Analysis.Api.SeriesPointList.CalcSum(System.Int32)">
+            <summary>
+            Calculates the total sum of all point's values
+            </summary>
+            <param name="aValueIndex">The index in the SeriesPoint.Values property</param>
+            <returns>The sum of all values</returns>
+        </member>
+        <member name="M:Analysis.Api.SeriesPointList.CalcAverage(System.Int32)">
+            <summary>
+            Calculates the average of all point's values
+            </summary>
+            <param name="aValueIndex">The index in the SeriesPoint.Values property</param>
+            <returns>The average value of all point's values</returns>
+        </member>
+        <member name="T:Analysis.Api.SeriesPointValue">
+            <summary>Represents a single value of a <see cref="T:Analysis.Api.SeriesPoint">SeriesPoint</see>.</summary>
+            <remarks>Each <tt>SeriesPointValue</tt> in a <see cref="T:Analysis.Api.SeriesPointValueList">collection</see> has a name
+            that is unique in the collection.</remarks>
+        </member>
+        <member name="P:Analysis.Api.SeriesPointValue.Name">
+            <summary>
+            The name of the value. 
+            </summary>
+            <remarks>
+            The name is unique among values of a single series point.
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.SeriesPointValue.Value">
+            <summary>
+            The measured value.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesPointValue.Title">
+            <summary>The sub-name, or secondary name.</summary>
+            <remarks>
+            If there is only one value per point, Title is an empty string.
+            </remarks>
+        </member>
+        <member name="T:Analysis.Api.SeriesPointValueList">
+            <summary>The collection of values of a <see cref="T:Analysis.Api.SeriesPoint">SeriesPoint</see> object.</summary>
+            <remarks>
+                The collection is populated with <see cref="T:Analysis.Api.SeriesPointValue">SeriesPointValue</see> objects by the <see cref="T:Analysis.Api.SeriesPoint">SeriesPoint</see> object that owns the collection. Each
+                SeriesPointValue object has a unique name.
+            </remarks>
+        </member>
+        <member name="T:Analysis.Api.SeriesRawStatistics">
+            <summary>
+            Calculates the raw statistical information of single series.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.SeriesRawStatistics.CalculateStatisticalFunction(Analysis.ApiLib.StatisticsFunctionKind)">
+            <summary>
+            Calculates the specified statistical function.
+            </summary>
+            <param name="aFuncKind">The type of the statistical function</param>
+            <returns>Result of the calculation</returns>
+        </member>
+        <member name="M:Analysis.Api.SeriesRawStatistics.CalcAverage">
+            <summary>
+            Returns teh average of all Series Points` values.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesRawStatistics.Count">
+            <summary>
+            The total number of measurements in the series.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.SeriesRawStatistics.Sum">
+            <summary>
+            The sum of the values in the series.
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.Session">
+            <summary>The Analysis session data.</summary>
+            <remarks>
+            	<para>The methods of this object return a boolean value.</para>
+            	<para>True indicates that the method succeeded.</para>
+            	<para>
+                    If a method returns false, the data on the failure is written 
+                    to the <see cref="T:Analysis.ApiLib.RunTimeErrors">RunTimeErrors Object</see>.
+                </para>
+            </remarks>
+        </member>
+        <member name="M:Analysis.Api.Session.#ctor(Analysis.Api.LrAnalysis,Analysis.ApiSL.LrAnalysisInfo)">
+            <summary>
+            Initializes a new instance of Session
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Session.#ctor">
+            <summary>
+            Dummy constructor for access from Delphi
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Session.Open(System.String)">
+            <summary>Opens a session database.</summary>
+            <returns>true on success</returns>
+            <remarks>
+            	<para>If a session is already open, it is closed before opening the new session.</para>
+            	<para>
+            	The application must <see cref="M:Analysis.Api.Session.Close">close</see> the open session before the end of the program run.
+             </para>
+            </remarks>
+            <param name="aFileName">
+            The absolute path name of the session database file. 
+            The file has an <tt>lra</tt> extension.
+            </param>
+        </member>
+        <member name="M:Analysis.Api.Session.OpenGraph(System.String)">
+            <summary>
+            Creates a new instance of the graph. The graph contains data for all runs in the session.
+            </summary>
+            <param name="aGraphName">The name of the graph to open</param>
+            <returns>The opened graph with data for all runs. If graph 'aGraphName' does not contain data, returns null.</returns>
+        </member>
+        <member name="M:Analysis.Api.Session.Create(System.String,System.String)">
+            <summary>Opens a new session using the default template.</summary>
+            <exception cref="T:System.ArgumentNullException">aSessionName or aResultFileName is null or empty</exception>
+            <returns>true on success</returns>
+            <param name="aSessionName">
+                The absolute path name of the new session file. The file has an <tt>lra</tt>
+                extension. The session file is created according to the configuration in <see cref="P:Analysis.ApiLib.Options.Database">Options.Database</see>.
+            </param>
+            <param name="aResultFileName">
+            The absolute path name of the existing results file. The file has an <tt>lrr</tt>
+            extension. This result is added to the session.
+            </param>
+        </member>
+        <member name="M:Analysis.Api.Session.Create(System.String,System.String,System.String)">
+            <summary>Opens a new session using the specified template.</summary>
+            <remarks>Get the list of available templates with ApiGlobal.GetInstance().Templates </remarks> 
+            <exception cref="T:System.ArgumentNullException">aSessionName or aResultFileName is null or empty</exception>
+            <returns>true on success</returns>
+            <param name="aSessionName">
+                The absolute path name of the new session file. The file has an <tt>lra</tt>
+                extension. The session file is created according to the configuration in <see cref="P:Analysis.ApiLib.Options.Database">Options.Database</see>.
+            </param>
+            <param name="aResultFileName">
+            The absolute path name of the existing results file. The file has an <tt>lrr</tt>
+            extension. This result is added to the session.
+            </param>
+            <param name="aTemplateName">The name of the template to apply. 
+            If the template name is an empty string, the default template is applied.
+            If the specified template is not in the list returned by ApiGlobal.GetInstance().Templates,
+            the method fails.
+            </param>
+        </member>
+        <member name="M:Analysis.Api.Session.CreateWithTemplateFile(System.String,System.String,System.String)">
+            <summary>Creates and opens a new session.</summary>
+            <exception cref="T:System.ArgumentNullException">aSessionName or aResultFileName are null or empty</exception>
+            <returns>true on success</returns>
+            <param name="aSessionName">
+                The absolute path name of the new session file. The file has an <tt>lra</tt>
+                extension. The session file is created according to the configuration in <see cref="P:Analysis.ApiLib.Options.Database">Options.Database</see>.
+            </param>
+            <param name="aResultFileName">
+            The absolute path name of the existing results file. The file has an <tt>lrr</tt>
+            extension. This result is added to the session.
+            </param>
+            <param name="aTemplateFileName">The name of the template file (*.tem) to apply to Session. 
+            If an empty string sepcified then default template is applied.
+            </param>
+        </member>
+        <member name="M:Analysis.Api.Session.Close">
+            <summary>Closes the currently opened session.</summary>
+            <returns>true on success</returns>
+            <remarks>If there is no open session, Close returns true.</remarks>
+        </member>
+        <member name="M:Analysis.Api.Session.CreateHtmlReportMaker">
+            <summary>
+            Returns a new instance of the report maker.
+            This method can be called only with an open session.
+            If a session is not open, an exception is thrown.
+            However, ff RunTimeErrors.IsSilentMode is true then it returns null
+            instead of throwing an exception.
+            </summary>
+            <returns>The report maker object that can be used to create HTML report.</returns>
+        </member>
+        <member name="M:Analysis.Api.Session.RecalculateSlaRules">
+            <summary>
+            Recalculates the SLA rules
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.Session.CalculateSla(System.String,System.Boolean)">
+            <summary>
+            Calculates SLA rules for the specified session.
+            </summary>
+            <param name="aSessionFileName">The name of the *.lra file with session for which to calculate the SLA rules</param>
+            <param name="aForceSlaCalculation">true - forces recalculation of SLA rules. 
+            Because recalculation is time-consuming,
+            set this parameter true only for corrupted sessions.</param>
+            <returns>The calculated SLA rules results</returns>
+        </member>
+        <member name="M:Analysis.Api.Session.CalculateSla(System.String)">
+            <summary>
+            Calculates SLA rules for the specified session
+            </summary>
+            <param name="aSessionFileName">The name of the *.lra file with session for which to calculate the SLA rules</param>
+            <returns>The calculated SLA rules results</returns>
+        </member>
+        <member name="P:Analysis.Api.Session.Name">
+            <summary>
+            The full name of Analysis Session file (*.LRA). 
+            If session is not opened then it property equals to string.Empty
+            </summary>
+            <remarks>
+            The Name property is the full path name with extension. 
+            For example: <tt>C:\\work\\qc_1234_warnings_as_errors\\sess_errs\\sess_errs.lra</tt>
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.Session.Events">
+            <summary>Events for the notification system.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.GlobalFilter">
+            <summary>The global session filter.</summary>
+            <remarks>
+            This object is identical to a regular filter, but contains a different list of
+            available items.
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.Session.Runs">
+            <summary>The collection of runs that are persistent in the session.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.TreePath">
+            <summary>
+            This dictionary is used to setup the filter for "Transaction Hierarchical Path"
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Session.IsOpenedOrCreated">
+            <summary>Indicates whether the Session is open.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.SlaRules">
+            <summary>
+            Returns the list of SLA rules statuses
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Session.Dictionaries">
+            <summary>
+            Returns IEnumerator to enumerate all available Dictionaries
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Session.TransactionEndStatuses">
+            <summary>The collection of transaction end status dictionary items.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.VUserEndStatuses">
+            <summary>The collection of Vuser end status dictionary items.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.VUsers">
+            <summary>The collection of Vuser IDs.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.AppHosts">
+            <summary>The collection of application server hosts.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.Descriptions">
+            <summary>The collection of description strings.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.ErrorMessages">
+            <summary>The collection of error messages.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.ExtendElements">
+            <summary>
+            Extend_Elements
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Session.Hosts">
+            <summary>The collection of load generators used running the scenario.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.IpAddresses">
+            <summary>
+            The collection of IP Addresses of the load generators used running the
+            scenario.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Session.J2eeClassNames">
+            <summary>
+            The collection of server-resident J2EE classes loaded when running the
+            scenario.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Session.J2eeLayerNames">
+            <summary>
+            The collection of server-resident J2EE layer names used when running the
+            scenario.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.Session.J2eeMethodNames">
+            <summary>The names of the J2EE methods called when running the scenario.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.J2eeMethods">
+            <summary>The J2EE methods called when running the scenario.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.J2eeSqls">
+            <summary>The J2EE queries run during the scenario.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.SapAccounts">
+            <summary>The collection of available SAP accounts.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.SapDsNames">
+            <summary>The collection of available SAP DSs.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.SapServers">
+            <summary>The collection of available SAP servers.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.SapTCodes">
+            <summary>The collection of available SAP T codes.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.SarmAreas">
+            <summary>The collection of available S</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.ScriptActions">
+            <summary>The collection of actions in the scripts used in the scenario.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.Scripts">
+            <summary>The collection of scripts used in the scenario.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.SiebelScripts">
+            <summary>The collection of Siebel scripts used in the scenario.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.SiebelServers">
+            <summary>The collection of Siebel servers used in the scenario.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.VUserGroups">
+            <summary>The collection of VUser groups in the scenario.</summary>
+        </member>
+        <member name="P:Analysis.Api.Session.VUserStatuses">
+            <summary>The collection of available VUser status codes.</summary>
+        </member>
+        <member name="T:Analysis.Api.LrAnalysis">
+            <summary>
+            The root object of LoadRunner Analysis API
+            </summary>
+        </member>
+        <member name="F:Analysis.Api.LrAnalysis.ENV_PATH">
+            <summary>
+            The name of PATH environment variable.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.LrAnalysis.#ctor">
+            <summary>
+            Initializes a new instance of the root class.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.LrAnalysis.InternalOpen(System.String,System.Data.Common.DbConnection)">
+            <summary>
+            Opens a session using existing connection to the database.
+            </summary>
+            <remarks>This method does not create a new connection.</remarks>
+            <param name="aFileName">The name of the *.lra file with session</param>
+            <param name="aConnection">An existing connection to the database. </param>
+            <returns>true if session was opened successfully</returns>
+        </member>
+        <member name="M:Analysis.Api.LrAnalysis.InternalOpen(System.Int32,System.Int32,System.Int32,System.Data.Common.DbConnection)">
+            <summary>
+            Opens a session using existing connection to the database.
+            </summary>
+            <remarks>This method does not create a new connection.</remarks>
+            <param name="aConnection">An existing connection to the database. </param>
+            <param name="aDbType">The type of the database to be opened</param>
+            <param name="aSessionStartTime">The session start time</param>
+            <param name="aSessionEndTime">The session end time</param>
+            <returns>true if session opened successfully</returns>
+        </member>
+        <member name="P:Analysis.Api.LrAnalysis.Exporters">
+            <summary>The members of the Exporters class are objects that export the data.</summary>
+            <remarks>Each exporter handles a different output format.</remarks>
+            <value>A reference to an <see cref="T:Analysis.Api.Export.Exporters">Exporters Class</see>.</value>
+        </member>
+        <member name="P:Analysis.Api.LrAnalysis.Options">
+            <summary>Services for handling the options for this instance.</summary>        
+        </member>
+        <member name="P:Analysis.Api.LrAnalysis.RunTimeErrors">
+            <summary>Services to handle the most recent run-time error.</summary>
+            <value>
+                A reference to the <see cref="T:Analysis.ApiLib.RunTimeErrors">RunTimeErrors
+                Object</see>.
+            </value>
+        </member>
+        <member name="P:Analysis.Api.LrAnalysis.DefaultOptimizationMode">
+            <summary>
+            Sets the default optimization mode for graphs. 
+            </summary>
+            <remarks>
+            Each newly opened graph uses this value for optimization.
+            Assign this property before accessing any graph in the Run.
+            To see the default value, use <see cref="F:Analysis.ApiLib.DataOptimization.Auto"> DataOptimization.Auto </see>
+            </remarks>
+        </member>
+        <member name="P:Analysis.Api.LrAnalysis.Session">
+            <summary>
+            Describes the current session of Analysis API
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.ApiGlobal">
+            <summary>
+            Contains data common to all instances of the analysis API
+            </summary>
+            <remarks>
+            ApiGlobal is a singleton.
+            </remarks>
+        </member>
+        <member name="M:Analysis.Api.ApiGlobal.GetInstance">
+            <summary>
+            Returns a reference to the single instance of this object.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.ApiGlobal.GraphNames">
+            <summary>
+            The collection of the names and descriptions of available graphs.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.ApiGlobal.Log">
+            <summary>
+            The object that handles logging.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.ApiGlobal.Templates">
+            <summary>
+            The list of available templates.
+            </summary>
+        </member>
+        <member name="M:Analysis.Api.ApiProgressImpl.CreateNotificationData">
+            <summary>
+            Creates an instance of NotificationProgressData
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.ApiProgressImpl.Data">
+            <summary>
+            This data will be passed to the ProgressEvent delegate
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.ApiProgressImpl.ProgressEvent">
+            <summary>
+            This delegete will be fired each time some method of IProgress interface is called
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.TransposedPoint">
+            <summary>
+            A transposed point
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedPoint.Attributes">
+            <summary>
+            Describes the point value.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedPoint.Name">
+            <summary>
+            The name  of the point. It can be treated as X dimension
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedPoint.Value">
+            <summary>
+            The value of the point
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.TransposedSeries">
+            <summary>
+            The list of series of the transposed points
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedSeries.Name">
+            <summary>
+            Name of the series
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedSeries.Title">
+            <summary>
+            The UI title of the series. Can be empty.
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedSeries.Minimum">
+            <summary>
+            Minimum series point value
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedSeries.Maximum">
+            <summary>
+            Maximum series point value
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedSeries.Sum">
+            <summary>
+            Summa of all series point values
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedSeries.Average">
+            <summary>
+            Average of series point values
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedSeries.SumSq">
+            <summary>
+            Sum of squares of series point values
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedSeries.StdDev">
+            <summary>
+            Standart deviation of series point values
+            </summary>
+        </member>
+        <member name="P:Analysis.Api.TransposedSeries.Median">
+            <summary>
+            The median of series point values
+            </summary>
+        </member>
+        <member name="T:Analysis.Api.TransposedSeriesList">
+            <summary>
+            The list of transposed series.
+            </summary>
+        </member>
+    </members>
+</doc>
