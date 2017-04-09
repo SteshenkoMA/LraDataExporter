@@ -1,7 +1,7 @@
 # LraDataExporter
 
-Данная программа позволяет подключаться к .lra файлам и выгружать основные данные по тестам в формате csv, png, реализуя готовые методы HP Analysys API C#
-За основую взят программа-пример "AnalysisApiSample2005", которая идет с HP Loadrunner      
+Данная программа позволяет подключаться к .lra файлам и выгружать основные данные по тестам в формате csv, png, реализуя готовые методы HP Analysys API C#    
+За основую взят программа-пример "AnalysisApiSample2005", которая идет с HP Loadrunner         
 ![default](https://cloud.githubusercontent.com/assets/13558216/24837483/f97130f8-1d3d-11e7-8ebb-099b53139c58.png)
 
 Как это выглядит:    
