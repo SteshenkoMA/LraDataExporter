@@ -26,9 +26,10 @@ __English__
 This program allows you to connect to .lra files and download the data for the tests in csv, png, implementing methods from HP Analysys API C#. The sample program "AnalysisApiSample2005" that comes with HP Loadrunner was used to write LraDataExporter.    
 
 Read more:   
-After studying HP Analisys API I've decided to write a program that can upload data and build graphics on them. The uploaded information is saved in the "Report" folder that is created in the directory with .lra file. This program contains only some of the possibilities offered by HP Analisys API, namely:     
 
-1) to connect to .the lra file (HP Analysis)   
-2) to upload transactions in csv format (number of transactions per second, response times, etc.)    
-3) to build on them graphics to png     
-4) unload start and end time and the duration of the test    
+After studying HP Analisys API I've decided to write a program that can upload data and build graphics on them. The uploaded information is saved in the "Report" folder that is created in the directory with .lra file. This program contains only some of the possibilities offered by HP Analisys API:     
+
+1) connect to .the lra file (HP Analysis)   
+2) get transactions in csv format (number of transactions per second, response times, etc.)    
+3) build png graphics   
+4) get start and end time and the duration of the test    
